@@ -56,8 +56,8 @@ output = "write" (variable | string | noconst) ";"										; output instruction
 
 assignment = variable "=" expression ";"												; assignment
 								
-expression = expression ("+" | "-") term | term 
-term = term ("*" | "/" | "%") | factor | factor 
+expression = expression ("+" | "-") term | term 										; expressions
+term = term ("*" | "/" | "%") factor | factor 
 factor = "(" expression ")" | variable | noconst | charconst
 
 conditional = "if" "(" condition ")" "{" {instruction} "}" "else" "{" {instruction} "}" ";"

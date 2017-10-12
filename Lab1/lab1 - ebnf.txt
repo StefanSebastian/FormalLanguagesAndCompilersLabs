@@ -30,9 +30,11 @@ c. Constants
 noconst = positive_number | "-"positive_number | zero_digit
 positive_number = non_zero_digit {digit} 
 - Character
-charconst = letter | digit
+charconst = """ char """
+char = letter | digit 
 - String
-string = charconst{string}
+string = """ charlist """
+charlist = char{char}
 
 Syntax
 
@@ -40,26 +42,30 @@ Syntactical rules
 program = "begin" {instruction} "end"
 instruction = declaration | statement								
 
-declaration = variableDeclaration | arrayDeclaration 
+declaration = variableDeclaration | arrayDeclaration 									; declarations
 variableDeclaration = type identifier ";"
-arrayDeclaration = type identifier "[" positive_number "]" ";"
+arrayDeclaration = type identifier "[" positive_number "]" ";"							; an array must have a positive number of values
 type = "int" | "char"
 
-variable = identifier | identifier "[" (positive_number | zero_digit) "]"			 	; simple variable or a position in array	
+variable = identifier | identifier "[" (positive_number | zero_digit) "]"			 	; simple variable or a position in array , position must be non-negative
 
 statement = assignment | input | output | conditional | loop
 
-input = "read" " " variable ";"
-output = "write" " " (variable | string) ";"
+input = "read" variable ";"																; input instruction 
+output = "write" (variable | string | noconst) ";"										; output instruction
 
-assignment = variable "=" (expression | noconst | charconst | variable) ";"				; assigns a constant/another variable or the result of a an expression
-expression = expressionTerm operator expressionTerm
-expressionTerm = variable | noconst | charconst | expression | "(" expression ")"		; nested expressions
-operator = "+" | "-" | "*" | "/" | "%" | "<" | "<=" | ">" | ">=" | "==" | "!="
+assignment = variable "=" expression ";"												; assignment
+								
+expression = expression ("+" | "-") term | term 
+term = term ("*" | "/" | "%") | factor | factor 
+factor = "(" expression ")" | variable | noconst | charconst
 
-conditional = "if" "(" expression ")" "{" {instruction} "}" "else" "{" {instruction} "}" ";"
+conditional = "if" "(" condition ")" "{" {instruction} "}" "else" "{" {instruction} "}" ";"
 
-loop = "while" "(" expression ")" "{" {instruction} "}" ";"
+loop = "while" "(" condition ")" "{" {instruction} "}" ";"
+
+condition = expression relation expression
+relation = "<" | "<=" | ">" | ">=" | "==" | "!="
 
 
 Token type 	code

@@ -27,8 +27,8 @@ underscore = "_"
 
 c. Constants
 - Integer
-noconst = no | "-"no
-no = non_zero_digit {digit}
+noconst = positive_number | "-"positive_number | zero_digit
+positive_number = non_zero_digit {digit} 
 - Character
 charconst = letter | digit
 - String
@@ -38,14 +38,14 @@ Syntax
 
 Syntactical rules
 program = "begin" {instruction} "end"
-instruction = typeDefinition | declaration | statement
+instruction = declaration | statement								
 
-typeDefinition = "struct" " " identifier "{" {type " " identifier ";"} "}" ";"			; a user defined type
-variable = identifier | identifier "." identifier 										; to access fields of a user defined type variable
-
-declaration = type " " identifier ";" | identifier " " identifier ";" 					; declare a variable of a user defined type
+declaration = variableDeclaration | arrayDeclaration 
+variableDeclaration = type identifier ";"
+arrayDeclaration = type identifier "[" positive_number "]" ";"
 type = "int" | "char"
 
+variable = identifier | identifier "[" (positive_number | zero_digit) "]"			 	; simple variable or a position in array	
 
 statement = assignment | input | output | conditional | loop
 

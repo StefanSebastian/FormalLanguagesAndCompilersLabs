@@ -1,0 +1,95 @@
+Language specification
+Stefan Sebastian 235
+
+1.Language definition
+
+Alphabet
+
+a. Upper (A - Z) and lower case letters (a - z) of the English alphabet
+b. Underline character '_'
+c. Decimal digits (0 - 9)
+
+Lexic
+
+a. Special symbols, representing
+- operators: + - * / % =  =  = == !=
+- separators: {} () ; space
+- reserved words: int char struct read write if else while begin end
+
+b. Identifiers
+- a sequence of letters, digits and underscores, such that the first character is a letter or an underscore
+identifier = (underscore | letter){ letter | digit | underscore }
+letter = "A" | "B" | .. | "Z" | "a" | "b" | .. | "z"
+non_zero_digit = "1" | "2" | .. | "9"
+zero_digit = "0"
+digit = zero_digit | non_zero_digit
+underscore = "_"
+
+c. Constants
+- Integer
+noconst = no | "-"no
+no = non_zero_digit {digit}
+- Character
+charconst = letter | digit
+- String
+string = charconst{string}
+
+Syntax
+
+Syntactical rules
+program = "begin" {instruction} "end"
+instruction = typeDefinition | declaration | statement
+
+typeDefinition = "struct" " " identifier "{" {type " " identifier ";"} "}" ";"			; a user defined type
+variable = identifier | identifier "." identifier 										; to access fields of a user defined type variable
+
+declaration = type " " identifier ";" | identifier " " identifier ";" 					; declare a variable of a user defined type
+type = "int" | "char"
+
+
+statement = assignment | input | output | conditional | loop
+
+input = "read" " " variable ";"
+output = "write" " " (variable | string) ";"
+
+assignment = variable "=" (expression | noconst | charconst | variable) ";"				; assigns a constant/another variable or the result of a an expression
+expression = expressionTerm operator expressionTerm
+expressionTerm = variable | noconst | charconst | expression | "(" expression ")"		; nested expressions
+operator = "+" | "-" | "*" | "/" | "%" | "<" | "<=" | ">" | ">=" | "==" | "!="
+
+conditional = "if" "(" expression ")" "{" {instruction} "}" "else" "{" {instruction} "}" ";"
+
+loop = "while" "(" expression ")" "{" {instruction} "}" ";"
+
+
+Token type 	code
+identifier 0
+constant 1
+begin 2
+end 3
+int 4
+char 5
+struct 6
+read 7
+write 8
+if 9
+else 10
+while 11
+{ 12
+} 13
+( 14
+) 15
+; 16
+space 17
++ 18
+- 19
+* 20
+/ 21
+% 22
+== 23
+= 24
+!= 25
+< 26
+<= 27
+> 28
+>= 29

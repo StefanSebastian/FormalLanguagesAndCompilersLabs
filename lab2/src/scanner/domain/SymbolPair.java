@@ -1,3 +1,5 @@
+package scanner.domain;
+
 /**
  * Created by Sebi on 17-Oct-17.
  */

@@ -6,6 +6,7 @@ package scanner.domain;
 public class PIFPair {
     private Integer atomCode;
     private Integer symbolTablePosition;
+    private String token;
 
     public PIFPair(Integer atomCode, Integer symbolTablePosition) {
         this.atomCode = atomCode;
@@ -28,8 +29,18 @@ public class PIFPair {
         this.symbolTablePosition = symbolTablePosition;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     @Override
     public String toString() {
-        return atomCode + " " + symbolTablePosition;
+        return token == null ?
+                atomCode + " " + symbolTablePosition :
+                atomCode + " " + symbolTablePosition + " " + token;
     }
 }

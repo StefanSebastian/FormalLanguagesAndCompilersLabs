@@ -95,7 +95,7 @@ public class SortedTable {
 
     public Integer getIdentifier(String symbol){
         SymbolPair pair = binarySearch(0, size - 1, symbol);
-        return pair.getIdentifier();
+        return pair == null ? null : pair.getIdentifier();
     }
 
     @Override

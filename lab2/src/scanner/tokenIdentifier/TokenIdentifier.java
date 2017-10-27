@@ -2,6 +2,7 @@ package scanner.tokenIdentifier;
 
 import scanner.ScannerException;
 import scanner.domain.PIFPair;
+import scanner.domain.SymbolPair;
 import scanner.scannerResult.ProgramInternalForm;
 import scanner.scannerResult.SymbolTable;
 import scanner.utils.FileReader;
@@ -10,6 +11,7 @@ import scanner.utils.RegexCollection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by Sebi on 27-Oct-17.
@@ -63,6 +65,9 @@ public class TokenIdentifier {
         if (token.matches(RegexCollection.SEPARATOR)){
             return TokenType.SEPARATOR;
         }
+        if (token.matches(RegexCollection.IDENTIFIER)){
+            return TokenType.IDENTIFIER;
+        }
 
         return TokenType.IDENTIFIER;
        // throw new ScannerException("Invalid token : " + token);
@@ -72,9 +77,26 @@ public class TokenIdentifier {
     Identifies the token and saves it to pif or symbolTable
      */
     public void identifyAndSave(String token) throws ScannerException {
+        // skip empty lines
+        if (Objects.equals(token, "")){
+            return;
+        }
+
         TokenType type = identify(token);
+        System.out.println("Token : " + token + " identified as " + type);
         if (type == TokenType.RESERVED_WORD || type == TokenType.SEPARATOR || type == TokenType.OPERATOR){
-            pif.insert(new PIFPair(codes.get(token), -1));
+            PIFPair pair = new PIFPair(codes.get(token), -1);
+            pair.setToken(token);
+            pif.insert(pair);
+        }
+        if (type == TokenType.IDENTIFIER){
+            Integer identifier = symbolTable.getIdentifier(token);
+            if (identifier == null){
+                identifier = symbolTable.insert(token);
+            }
+            PIFPair pair = new PIFPair(codes.get("identifier"), identifier);
+            pair.setToken(token);
+            pif.insert(pair);
         }
     }
 

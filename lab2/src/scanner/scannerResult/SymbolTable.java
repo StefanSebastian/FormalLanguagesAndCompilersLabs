@@ -9,13 +9,20 @@ import scanner.domain.SymbolPair;
 public class SymbolTable {
     private SortedTable table;
 
+    private Integer identifier = 0;
+
     public SymbolTable(){
         table = new SortedTable();
     }
 
-    // maybe string symbol - do a query then add with a generated id
     public void insert(SymbolPair symbolPair){
         table.insert(symbolPair);
+    }
+
+    public Integer insert(String symbol){
+        identifier++;
+        table.insert(new SymbolPair(identifier, symbol));
+        return identifier;
     }
 
     public Integer getIdentifier(String symbol){

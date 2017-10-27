@@ -12,11 +12,8 @@ import java.util.List;
  */
 public class SeparatorTokenizer implements ITokenizer {
 
-    private String getSeparators(){
-        return "( |;|\\(|\\)|\\{|\\})";
-    }
 
     public List<String> tokenize(String input) throws ScannerException {
-        return Arrays.asList(input.split(String.format(RegexCollection.WITH_DELIMITER, getSeparators())));
+        return Arrays.asList(input.split(String.format(RegexCollection.WITH_DELIMITER, RegexCollection.SEPARATOR)));
     }
 }

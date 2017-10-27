@@ -13,7 +13,7 @@ Lexic
 
 a. Special symbols, representing
 - operators: + - * / % <= < >= > = == !=
-- separators: {} () ; space " '
+- separators: {} () ; space []
 - reserved words: int char read write if else while begin end
 
 b. Identifiers
@@ -34,8 +34,7 @@ charconst = "'" char "'"
 char = letter | digit 
 - String
 string = """ charlist """
-charlist = (char|symbol){(char | symbol)}
-symbol = " " | underscore
+charlist = (char|underscore){(char | underscore)}
 
 Syntax
 
@@ -99,5 +98,5 @@ space 16
 <= 26
 > 27
 >= 28
-" 29
-' 30
+[ 29
+] 30

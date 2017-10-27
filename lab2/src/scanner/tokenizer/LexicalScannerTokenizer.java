@@ -1,6 +1,7 @@
 package scanner.tokenizer;
 
 import scanner.ScannerException;
+import scanner.utils.RegexCollection;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,7 +33,7 @@ public class LexicalScannerTokenizer implements ITokenizer {
             if (tokens.get(i).equals("-") && isInteger(tokens.get(i + 1))){
                 // if the precedent is an operator or separator
                 String precedent = getPrecedent(tokens, i - 1);
-                if (Constants.operators.contains(precedent)
+                if (precedent.matches(RegexCollection.OPERATOR)
                         || precedent.equals("(")){
                     // save as constant
                     tokens.set(i, tokens.get(i) + tokens.get(i + 1));

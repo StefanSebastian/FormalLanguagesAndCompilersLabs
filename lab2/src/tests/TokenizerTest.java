@@ -193,4 +193,22 @@ public class TokenizerTest {
         assertTrue(tokens.size() == 10);
     }
 
+    @Test
+    public void charsStringTest() throws Exception {
+        LexicalScannerTokenizer tokenizer = new LexicalScannerTokenizer();
+        List<String> tokens;
+
+        tokens = tokenizer.tokenize("char a='a'");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 5);
+
+        tokens = tokenizer.tokenize("char b= 'a'");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 6);
+
+        tokens = tokenizer.tokenize("write \"this_is_a_string\"");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 3);
+    }
+
 }

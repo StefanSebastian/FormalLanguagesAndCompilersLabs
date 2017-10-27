@@ -18,4 +18,17 @@ public class ProgramInternalForm {
     public void insert(PIFPair pair){
         data.add(pair);
     }
+
+    @Override
+    public String toString() {
+        String res = "ProgramInternalForm{\n";
+
+        for (PIFPair pair : data){
+            res += pair;
+            res += "\n";
+        }
+
+        res += "}";
+        return res;
+    }
 }

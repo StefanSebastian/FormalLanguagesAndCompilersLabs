@@ -27,4 +27,9 @@ public class PIFPair {
     public void setSymbolTablePosition(Integer symbolTablePosition) {
         this.symbolTablePosition = symbolTablePosition;
     }
+
+    @Override
+    public String toString() {
+        return atomCode + " " + symbolTablePosition;
+    }
 }

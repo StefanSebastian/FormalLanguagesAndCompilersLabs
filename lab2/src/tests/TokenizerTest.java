@@ -187,6 +187,10 @@ public class TokenizerTest {
         tokens = tokenizer.tokenize("int a=((a+b)-3)");
         System.out.println(tokens);
         assertTrue(tokens.size() == 13);
+
+        tokens = tokenizer.tokenize("while( -3 <a-3)");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 10);
     }
 
 }

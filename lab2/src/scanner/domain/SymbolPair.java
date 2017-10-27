@@ -43,4 +43,9 @@ public class SymbolPair implements Comparable<SymbolPair>{
 
         return symbol != null ? symbol.equals(symbol1.symbol) : symbol1.symbol == null;
     }
+
+    @Override
+    public String toString() {
+        return identifier + " " + symbol;
+    }
 }

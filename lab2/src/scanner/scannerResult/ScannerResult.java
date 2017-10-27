@@ -32,4 +32,9 @@ public class ScannerResult {
     public void setSymbolTable(SymbolTable symbolTable) {
         this.symbolTable = symbolTable;
     }
+
+    @Override
+    public String toString() {
+        return programInternalForm + "\n" + symbolTable;
+    }
 }

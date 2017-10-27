@@ -21,4 +21,11 @@ public class SymbolTable {
     public Integer getIdentifier(String symbol){
         return table.getIdentifier(symbol);
     }
+
+    @Override
+    public String toString() {
+        return "SymbolTable{" +
+                "table=" + table +
+                '}';
+    }
 }

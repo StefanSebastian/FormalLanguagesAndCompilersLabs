@@ -98,4 +98,13 @@ public class SortedTable {
         return pair.getIdentifier();
     }
 
+    @Override
+    public String toString(){
+        String res = "";
+        for (int i = 0; i < size; i++){
+            res += table[i];
+            res += "\n";
+        }
+        return res;
+    }
 }

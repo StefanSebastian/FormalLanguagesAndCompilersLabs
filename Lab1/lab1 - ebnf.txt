@@ -14,7 +14,7 @@ Lexic
 a. Special symbols, representing
 - operators: + - * / % <= < >= > = == !=
 - separators: {} () ; space " '
-- reserved words: int char struct read write if else while begin end
+- reserved words: int char read write if else while begin end
 
 b. Identifiers
 - a sequence of letters, digits and underscores, such that the first character is a letter or an underscore

@@ -51,8 +51,8 @@ variable = identifier | identifier "[" (positive_number | zero_digit) "]"			 	; 
 
 statement = assignment | input | output | conditional | loop
 
-input = "read" variable ";"																; input instruction 
-output = "write" (variable | string | noconst) ";"										; output instruction
+input = "read" + "(" variable +")" + ";"																; input instruction 
+output = "write" + "(" + (variable | string | noconst) + ")" + ";"										; output instruction
 
 assignment = variable "=" expression ";"												; assignment
 								

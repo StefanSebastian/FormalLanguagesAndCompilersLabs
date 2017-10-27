@@ -1,11 +1,11 @@
 begin
 int a;
 int b;
-read a;
-read b;
+read(a);
+read(b);
 
 int c;
 c = a + b;
 
-write c;
+write(c);
 end

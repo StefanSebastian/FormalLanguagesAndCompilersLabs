@@ -211,4 +211,57 @@ public class TokenizerTest {
         assertTrue(tokens.size() == 3);
     }
 
+    @Test
+    public void inputOutput() throws Exception {
+        LexicalScannerTokenizer tokenizer = new LexicalScannerTokenizer();
+        List<String> tokens;
+
+        tokens = tokenizer.tokenize("read(a)");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 4);
+
+        tokens = tokenizer.tokenize("read( a)");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 5);
+
+        tokens = tokenizer.tokenize("read(a )");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 5);
+
+        tokens = tokenizer.tokenize("read( a )");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 6);
+
+        tokens = tokenizer.tokenize("write(-2)");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 4);
+
+        tokens = tokenizer.tokenize("write( -2)");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 5);
+    }
+
+
+    @Test
+    public void arrays() throws Exception {
+        LexicalScannerTokenizer tokenizer = new LexicalScannerTokenizer();
+        List<String> tokens;
+
+        tokens = tokenizer.tokenize("int a[100]");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 6);
+
+        tokens = tokenizer.tokenize("int a = b[10] + 1");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 14);
+
+        tokens = tokenizer.tokenize("a[10]+b[1]>c[2]");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 14);
+
+        tokens = tokenizer.tokenize("a[10]-b[1]>c[2]");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 14);
+
+    }
 }

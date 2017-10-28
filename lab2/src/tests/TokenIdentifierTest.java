@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  * Created by Sebi on 28-Oct-17.
  */
 public class TokenIdentifierTest {
-    private TokenIdentifier tokenIdentifier = new TokenIdentifier(new ProgramInternalForm(), new SymbolTable());
+    private TokenIdentifier tokenIdentifier = new TokenIdentifier();
 
     @Test
     public void identifyConstants() throws Exception {

@@ -2,7 +2,6 @@ package scanner.tokenIdentifier;
 
 import scanner.ScannerException;
 import scanner.domain.PIFPair;
-import scanner.domain.SymbolPair;
 import scanner.scannerResult.ProgramInternalForm;
 import scanner.scannerResult.SymbolTable;
 import scanner.utils.FileReader;
@@ -65,15 +64,20 @@ public class TokenIdentifier {
         if (token.matches(RegexCollection.SEPARATOR)){
             return TokenType.SEPARATOR;
         }
-        if (token.matches(RegexCollection.IDENTIFIER) && token.matches(RegexCollection.LENGHT_250)){
+        if (token.matches(RegexCollection.IDENTIFIER) && token.matches(RegexCollection.LENGTH_250)){
             return TokenType.IDENTIFIER;
         }
         if (token.matches(RegexCollection.NUMERIC_CONSTANT)){
             return TokenType.CONSTANT;
         }
+        if (token.matches(RegexCollection.CHAR_CONSTANT)){
+            return TokenType.CONSTANT;
+        }
+        if (token.matches(RegexCollection.STRING_CONSTANT)){
+            return TokenType.CONSTANT;
+        }
 
-        return TokenType.IDENTIFIER;
-       // throw new ScannerException("Invalid token : " + token);
+        throw new ScannerException("Invalid token : " + token);
     }
 
     /*

@@ -13,7 +13,7 @@ public class Main {
             result = scanner.runScanner("E:\\Info\\anu3\\lb formale\\git\\FormalLanguagesAndCompilersLabs\\lab2\\src\\scanner\\resources\\program.txt");
             System.out.println(result);
         } catch (ScannerException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
 

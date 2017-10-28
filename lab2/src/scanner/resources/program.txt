@@ -9,5 +9,11 @@ c = a + b;
 c = c + 2;
 c = c + -22;
 
+char d;
+d = 'd';
+
+write("o_constanta_string");
+
+
 write(c);
 end

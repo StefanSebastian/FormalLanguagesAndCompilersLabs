@@ -29,10 +29,17 @@ public class Scanner implements IScanner {
 
     @Override
     public ScannerResult runScanner(String filePath) throws ScannerException {
+        Integer lineNr = 0;
         for (String line : fileReader.getLines(filePath)){
             List<String> lineTokens = tokenizer.tokenize(line);
-            for (String token : lineTokens){
-                tokenIdentifier.identifyAndSave(token);
+            lineNr++;
+
+            try {
+                for (String token : lineTokens) {
+                    tokenIdentifier.identifyAndSave(token);
+                }
+            } catch (ScannerException e){
+                throw new ScannerException(e.getMessage() + " on line " + lineNr);
             }
         }
 

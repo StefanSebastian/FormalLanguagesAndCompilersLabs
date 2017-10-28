@@ -54,7 +54,7 @@ public class TokenIdentifier {
     /*
     Returns the type of a token
      */
-    private TokenType identify(String token) throws ScannerException{
+    public TokenType identify(String token) throws ScannerException{
         if (token.matches(RegexCollection.RESERVED_WORD)){
             return TokenType.RESERVED_WORD;
         }

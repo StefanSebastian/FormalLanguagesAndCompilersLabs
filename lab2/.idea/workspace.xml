@@ -26,11 +26,31 @@
       <file leaf-file-name="TokenIdentifier.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scanner/tokenIdentifier/TokenIdentifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="79" column="7" lean-forward="false" selection-start-line="79" selection-start-column="7" selection-end-line="79" selection-end-column="7" />
+            <state relative-caret-position="224">
+              <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TokenIdentifierTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/tests/TokenIdentifierTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="133" column="50" lean-forward="false" selection-start-line="133" selection-start-column="50" selection-end-line="133" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TokenizerTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tests/TokenizerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="453">
+              <caret line="264" column="0" lean-forward="false" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -57,10 +77,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="program.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="program.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scanner/resources/program.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
+            <state relative-caret-position="255">
               <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
@@ -95,9 +115,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
         <option value="Enum" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -156,10 +176,12 @@
         <option value="$PROJECT_DIR$/src/scanner/scannerResult/SymbolTable.java" />
         <option value="$PROJECT_DIR$/src/scanner/utils/SortedTable.java" />
         <option value="$PROJECT_DIR$/src/scanner/utils/RegexCollection.java" />
-        <option value="$PROJECT_DIR$/src/scanner/tokenIdentifier/TokenIdentifier.java" />
         <option value="$PROJECT_DIR$/src/scanner/Scanner.java" />
         <option value="$PROJECT_DIR$/src/scanner/Main.java" />
         <option value="$PROJECT_DIR$/src/scanner/resources/program.txt" />
+        <option value="$PROJECT_DIR$/src/scanner/tokenIdentifier/TokenIdentifier.java" />
+        <option value="$PROJECT_DIR$/src/scanner/tokenIdentifier/TokenIdentifierTest.java" />
+        <option value="$PROJECT_DIR$/src/tests/TokenIdentifierTest.java" />
       </list>
     </option>
   </component>
@@ -386,6 +408,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="scanner.tokenIdentifier" />
       <recent name="tests" />
       <recent name="" />
     </key>
@@ -405,8 +428,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration default="false" name="TokenizerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.tests in lab2">
+    <configuration default="false" name="TokenIdentifierTest.identifiers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="tests.*" />
@@ -417,34 +440,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.TokenizerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="TokenizerTest.inputOutput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="lab2" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.TokenizerTest" />
-      <option name="METHOD_NAME" value="inputOutput" />
+      <option name="MAIN_CLASS_NAME" value="tests.TokenIdentifierTest" />
+      <option name="METHOD_NAME" value="identifiers" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -458,7 +455,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="TokenizerTest.arrays" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="TokenIdentifierTest.operators" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="tests.*" />
@@ -469,8 +466,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.TokenizerTest" />
-      <option name="METHOD_NAME" value="arrays" />
+      <option name="MAIN_CLASS_NAME" value="tests.TokenIdentifierTest" />
+      <option name="METHOD_NAME" value="operators" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -484,27 +481,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="scanner.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="scanner.Main" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="lab2" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="SortedTableTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="TokenIdentifierTest.separators" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="tests.*" />
@@ -515,9 +492,61 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.SortedTableTest" />
+      <option name="MAIN_CLASS_NAME" value="tests.TokenIdentifierTest" />
+      <option name="METHOD_NAME" value="separators" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="TokenIdentifierTest.reservedWords" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="lab2" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.TokenIdentifierTest" />
+      <option name="METHOD_NAME" value="reservedWords" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="tests in lab2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="lab2" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" />
       <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -918,19 +947,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.TokenizerTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.TokenizerTest.inputOutput" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TokenizerTest.arrays" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Main" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.SortedTableTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.TokenIdentifierTest.identifiers" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TokenIdentifierTest.operators" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TokenIdentifierTest.separators" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TokenIdentifierTest.reservedWords" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.tests in lab2" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.SortedTableTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.TokenizerTest.arrays" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TokenizerTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.TokenizerTest.inputOutput" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.tests in lab2" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TokenIdentifierTest.reservedWords" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TokenIdentifierTest.separators" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TokenIdentifierTest.operators" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TokenIdentifierTest.identifiers" />
       </list>
     </recent_temporary>
   </component>
@@ -949,44 +978,44 @@
       <workItem from="1508683700324" duration="4158000" />
       <workItem from="1508832267670" duration="336000" />
       <workItem from="1509092689603" duration="16682000" />
-      <workItem from="1509173812273" duration="2809000" />
+      <workItem from="1509173812273" duration="3689000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SortedTableTest - 2017.10.28 at 10h 16m 36s.xml">
-      <configuration name="SortedTableTest" configurationId="JUnit" />
+    <history-entry file="TokenIdentifierTest_identifiers - 2017.10.28 at 10h 55m 41s.xml">
+      <configuration name="TokenIdentifierTest.identifiers" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TokenizerTest - 2017.10.27 at 17h 52m 11s.xml">
-      <configuration name="TokenizerTest" configurationId="JUnit" />
+    <history-entry file="TokenIdentifierTest_identifiers - 2017.10.28 at 10h 56m 29s.xml">
+      <configuration name="TokenIdentifierTest.identifiers" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TokenizerTest_arrays - 2017.10.27 at 17h 50m 12s.xml">
-      <configuration name="TokenizerTest.arrays" configurationId="JUnit" />
+    <history-entry file="TokenIdentifierTest_identifiers - 2017.10.28 at 10h 56m 46s.xml">
+      <configuration name="TokenIdentifierTest.identifiers" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TokenizerTest_arrays - 2017.10.27 at 17h 51m 17s.xml">
-      <configuration name="TokenizerTest.arrays" configurationId="JUnit" />
+    <history-entry file="TokenIdentifierTest_identifyConstants - 2017.10.28 at 10h 53m 54s.xml">
+      <configuration name="TokenIdentifierTest.identifyConstants" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TokenizerTest_arrays - 2017.10.27 at 17h 51m 57s.xml">
-      <configuration name="TokenizerTest.arrays" configurationId="JUnit" />
+    <history-entry file="TokenIdentifierTest_identifyConstants - 2017.10.28 at 10h 54m 24s.xml">
+      <configuration name="TokenIdentifierTest.identifyConstants" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TokenizerTest_arrays - 2017.10.27 at 17h 52m 05s.xml">
-      <configuration name="TokenizerTest.arrays" configurationId="JUnit" />
+    <history-entry file="TokenIdentifierTest_operators - 2017.10.28 at 10h 57m 29s.xml">
+      <configuration name="TokenIdentifierTest.operators" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TokenizerTest_arrays - 2017.10.27 at 17h 52m 44s.xml">
-      <configuration name="TokenizerTest.arrays" configurationId="JUnit" />
+    <history-entry file="TokenIdentifierTest_operators - 2017.10.28 at 10h 57m 40s.xml">
+      <configuration name="TokenIdentifierTest.operators" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TokenizerTest_arrays - 2017.10.27 at 17h 53m 19s.xml">
-      <configuration name="TokenizerTest.arrays" configurationId="JUnit" />
+    <history-entry file="TokenIdentifierTest_reservedWords - 2017.10.28 at 10h 58m 48s.xml">
+      <configuration name="TokenIdentifierTest.reservedWords" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TokenizerTest_arrays - 2017.10.27 at 17h 53m 43s.xml">
-      <configuration name="TokenizerTest.arrays" configurationId="JUnit" />
+    <history-entry file="TokenIdentifierTest_separators - 2017.10.28 at 10h 58m 13s.xml">
+      <configuration name="TokenIdentifierTest.separators" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TokenizerTest_arrays - 2017.10.27 at 17h 53m 54s.xml">
-      <configuration name="TokenizerTest.arrays" configurationId="JUnit" />
+    <history-entry file="tests_in_lab2 - 2017.10.28 at 10h 58m 53s.xml">
+      <configuration name="tests in lab2" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27248000" />
+    <option name="totallyTimeSpent" value="28128000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1031,7 +1060,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="25" />
+      <option name="time" value="26" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1178,6 +1207,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="45" column="9" lean-forward="false" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1222,13 +1254,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
           <caret line="35" column="63" lean-forward="false" selection-start-line="35" selection-start-column="63" selection-end-line="35" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scanner/tokenIdentifier/codes.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="4" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1236,13 +1264,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="16" column="112" lean-forward="false" selection-start-line="16" selection-start-column="112" selection-end-line="16" selection-end-column="112" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/TokenizerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="264" column="0" lean-forward="false" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1294,16 +1315,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scanner/tokenIdentifier/TokenIdentifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="79" column="7" lean-forward="false" selection-start-line="79" selection-start-column="7" selection-end-line="79" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/scanner/Scanner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
@@ -1324,8 +1335,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scanner/resources/program.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
+        <state relative-caret-position="255">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scanner/tokenIdentifier/codes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="30" column="4" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests/TokenizerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="264" column="0" lean-forward="false" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scanner/tokenIdentifier/TokenIdentifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests/TokenIdentifierTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="133" column="50" lean-forward="false" selection-start-line="133" selection-start-column="50" selection-end-line="133" selection-end-column="50" />
           <folding />
         </state>
       </provider>

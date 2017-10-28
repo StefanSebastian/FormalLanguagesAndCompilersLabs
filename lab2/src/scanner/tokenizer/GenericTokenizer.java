@@ -10,10 +10,10 @@ import java.util.List;
 /**
  * Created by Sebi on 27-Oct-17.
  */
-public class Tokenizer implements ITokenizer {
+public class GenericTokenizer implements ITokenizer {
     private String delimiters;
 
-    public Tokenizer(String delimiters){
+    public GenericTokenizer(String delimiters){
         this.delimiters = delimiters;
     }
 

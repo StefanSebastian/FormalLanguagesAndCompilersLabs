@@ -92,7 +92,7 @@ public class TokenIdentifier {
         TokenType type = identify(token);
         System.out.println("Token : " + token + " identified as " + type);
         if (type == TokenType.RESERVED_WORD || type == TokenType.SEPARATOR || type == TokenType.OPERATOR){
-            PIFPair pair = new PIFPair(codes.get(token), -1);
+            PIFPair pair = new PIFPair(token.equals(" ") ? codes.get("space") : codes.get(token), -1);
             pair.setToken(token);
             pif.insert(pair);
         }

@@ -1,12 +1,10 @@
 package scanner.tokenizer;
 
 import scanner.ScannerException;
-import scanner.utils.RegexCollection;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Sebi on 27-Oct-17.
@@ -31,11 +29,11 @@ public class OperatorTokenizer implements ITokenizer {
         List<String> tokens = new ArrayList<>();
 
         // apply tokenizer on operators of 2 chars : >=, <=, !=, ==
-        Tokenizer doubleCharOpTokenizer = new Tokenizer(getDoubleOperators());
+        GenericTokenizer doubleCharOpTokenizer = new GenericTokenizer(getDoubleOperators());
         List<String> firstSplit = doubleCharOpTokenizer.tokenize(input);
 
         // for each token of the previous operation (that is not an operator) apply a tokenizer on single-char operator
-        Tokenizer singleCharOpTokenizer = new Tokenizer(getSingleCharOperators());
+        GenericTokenizer singleCharOpTokenizer = new GenericTokenizer(getSingleCharOperators());
         for (String toSplit : firstSplit){
             // ignore if operator
             if (doubleCharOps.contains(toSplit)){

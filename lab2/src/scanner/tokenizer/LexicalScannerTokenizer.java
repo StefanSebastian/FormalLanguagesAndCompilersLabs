@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Sebi on 27-Oct-17.
  */
-public class LexicalScannerTokenizer implements ITokenizer {
+public class LexicalScannerTokenizer implements ITokenizer{
     private boolean isInteger(String nr){
         try {
             Integer.parseInt(nr);
@@ -42,7 +42,6 @@ public class LexicalScannerTokenizer implements ITokenizer {
             }
         }
     }
-
 
     @Override
     public List<String> tokenize(String input) throws ScannerException {

@@ -1,0 +1,32 @@
+begin
+int a;
+int b;
+read(a);
+read(b);
+
+int c;
+c = a + b;
+c = c + 2;
+c = c + -22;
+
+if(a<=2-3){
+    a=(b+c)-3;
+}
+
+while( -2 != 3){
+
+}
+
+char d;
+d = 'd';
+
+write("o_constanta_string");
+
+
+write(c);
+
+int _ab2[100];
+
+_ab2[2] = 3 * a;
+
+end

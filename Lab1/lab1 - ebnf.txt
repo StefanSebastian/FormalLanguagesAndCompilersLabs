@@ -47,7 +47,7 @@ variableDeclaration = type identifier ";"
 arrayDeclaration = type identifier "[" positive_number "]" ";"							; an array must have a positive number of values
 type = "int" | "char"
 
-variable = identifier | identifier "[" (positive_number | zero_digit) "]"			 	; simple variable or a position in array , position must be non-negative
+variable = identifier | identifier "[" (positive_number | zero_digit | identifier) "]"			 	; simple variable or a position in array , position must be non-negative
 
 statement = assignment | input | output | conditional | loop
 

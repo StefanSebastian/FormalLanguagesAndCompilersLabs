@@ -87,7 +87,7 @@ public class SortedTable {
         }
 
         if (symbol.compareTo(table[mid].getSymbol()) < 0){
-            return binarySearch(start, mid, symbol);
+            return binarySearch(start, mid - 1, symbol);
         } else {
             return binarySearch(mid + 1, end, symbol);
         }

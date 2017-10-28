@@ -6,6 +6,8 @@ read(b);
 
 int c;
 c = a + b;
+c = c + 2;
+c = c + -22;
 
 write(c);
 end

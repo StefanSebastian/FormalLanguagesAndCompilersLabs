@@ -65,8 +65,11 @@ public class TokenIdentifier {
         if (token.matches(RegexCollection.SEPARATOR)){
             return TokenType.SEPARATOR;
         }
-        if (token.matches(RegexCollection.IDENTIFIER)){
+        if (token.matches(RegexCollection.IDENTIFIER) && token.matches(RegexCollection.LENGHT_250)){
             return TokenType.IDENTIFIER;
+        }
+        if (token.matches(RegexCollection.NUMERIC_CONSTANT)){
+            return TokenType.CONSTANT;
         }
 
         return TokenType.IDENTIFIER;
@@ -89,15 +92,21 @@ public class TokenIdentifier {
             pair.setToken(token);
             pif.insert(pair);
         }
-        if (type == TokenType.IDENTIFIER){
+        if (type == TokenType.IDENTIFIER || type == TokenType.CONSTANT){
             Integer identifier = symbolTable.getIdentifier(token);
             if (identifier == null){
                 identifier = symbolTable.insert(token);
             }
-            PIFPair pair = new PIFPair(codes.get("identifier"), identifier);
+            PIFPair pair;
+            if (type == TokenType.CONSTANT) {
+                pair = new PIFPair(codes.get("constant"), identifier);
+            } else {
+                pair = new PIFPair(codes.get("identifier"), identifier);
+            }
             pair.setToken(token);
             pif.insert(pair);
         }
+
     }
 
 }

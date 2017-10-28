@@ -9,4 +9,6 @@ public class RegexCollection {
     public static final String OPERATOR = "\\+|-|\\*|/|%|<|>|=|<=|>=|==|!=";
     public static final String SEPARATOR = " |;|\\(|\\)|\\{|\\}|\\[|\\]";
     public static final String IDENTIFIER = "(_|[a-zA-Z])[a-zA-Z0-9_]*";
+    public static final String LENGHT_250 = "^.{1,250}$";
+    public static final String NUMERIC_CONSTANT = "[-]?[1-9]+[0-9]*|0";
 }

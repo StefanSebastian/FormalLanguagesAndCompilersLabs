@@ -264,4 +264,22 @@ public class TokenizerTest {
         assertTrue(tokens.size() == 14);
 
     }
+
+    @Test
+    public void constantNegative() throws Exception {
+        LexicalScannerTokenizer tokenizer = new LexicalScannerTokenizer();
+        List<String> tokens;
+
+        tokens = tokenizer.tokenize("-20");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 1);
+
+        tokens = tokenizer.tokenize("[-20]");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 3);
+
+        tokens = tokenizer.tokenize("{-20}");
+        System.out.println(tokens);
+        assertTrue(tokens.size() == 3);
+    }
 }

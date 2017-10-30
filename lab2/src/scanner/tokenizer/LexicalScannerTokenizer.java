@@ -34,12 +34,16 @@ public class LexicalScannerTokenizer implements ITokenizer{
                 // if the precedent is an operator or separator
                 String precedent = getPrecedent(tokens, i - 1);
                 if (precedent.matches(RegexCollection.OPERATOR)
-                        || precedent.equals("(")){
+                        || precedent.equals("(") || precedent.equals("[") || precedent.equals("{")){
                     // save as constant
                     tokens.set(i, tokens.get(i) + tokens.get(i + 1));
                     tokens.remove(i + 1);
                 }
             }
+        }
+        if (tokens.get(0).equals("-") && isInteger(tokens.get(1))){
+            tokens.set(0, tokens.get(0) + tokens.get(1));
+            tokens.remove(1);
         }
     }
 

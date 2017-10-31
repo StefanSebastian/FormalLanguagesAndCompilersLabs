@@ -282,4 +282,16 @@ public class TokenizerTest {
         System.out.println(tokens);
         assertTrue(tokens.size() == 3);
     }
+
+    @Test
+    public void separators() throws Exception {
+        LexicalScannerTokenizer tokenizer = new LexicalScannerTokenizer();
+        List<String> tokens;
+
+        tokens = tokenizer.tokenize("<==");
+        System.out.println(tokens);
+
+        tokens = tokenizer.tokenize("<=abc");
+        System.out.println(tokens);
+    }
 }

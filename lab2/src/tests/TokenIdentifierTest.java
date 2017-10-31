@@ -132,5 +132,6 @@ public class TokenIdentifierTest {
         type = tokenIdentifier.identify("begin");
         System.out.println(type);
         assertTrue(type == TokenType.RESERVED_WORD);
+
     }
 }

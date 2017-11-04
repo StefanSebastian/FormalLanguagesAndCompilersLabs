@@ -27,7 +27,7 @@ public class UI {
         System.out.println("2.Display grammars");
     }
 
-    private List<Production> readProductions(Scanner reader){
+    private List<Production> readProductions(Scanner reader) throws AppException {
 
 
         List<Production> productions = new LinkedList<>();
@@ -36,6 +36,11 @@ public class UI {
         while (!prod.equals("end")){
             // split left side , right side
             String[] leftRight = prod.split("->");
+
+            if (leftRight.length != 2){
+                throw new AppException("Invalid format");
+            }
+
             String leftSide = leftRight[0];
 
             // split in disjunctions
@@ -122,10 +127,49 @@ public class UI {
 
     }
 
+    private void displayGrammarDetailsMenu(String id) throws AppException{
+        Grammar grammar = controller.getById(id);
+        if (grammar == null){
+            System.out.println("Invalid id");
+            return;
+        }
+
+        while (true){
+            System.out.println("1.terminals");
+            System.out.println("2.nonterminals");
+            System.out.println("3.start symbol");
+            System.out.println("4.productions");
+            System.out.println("5.back");
+
+            String opt = reader.next();
+            if (opt.equals("1")){
+                System.out.println(grammar.getTerminals());
+            } else if (opt.equals("2")){
+                System.out.println(grammar.getNonterminals());
+            } else if (opt.equals("3")){
+                System.out.println(grammar.getStartSymbol());
+            } else if (opt.equals("4")){
+                System.out.println(grammar.getProductions());
+            } else if (opt.equals("5")){
+                break;
+            }
+        }
+    }
+
     private void displayGrammars() throws AppException{
 
         for (Grammar grammar : controller.getGrammars().values()) {
-            System.out.println(grammar);
+            System.out.println(grammar.getId());
+        }
+
+        System.out.println("1.display grammar details");
+        System.out.println("2.back");
+
+        String opt = reader.next();
+        if (opt.equals("1")){
+            System.out.println("Grammar id : ");
+            String id = reader.next();
+            displayGrammarDetailsMenu(id);
         }
 
     }

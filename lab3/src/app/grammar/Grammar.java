@@ -8,14 +8,14 @@ import java.util.List;
 public class Grammar {
     private String id;
     private List<String> nonterminals;
-    private List<String> terminas;
+    private List<String> terminals;
     private List<Production> productions;
     private String startSymbol;
 
     public Grammar(String id, List<String> nonterminals, List<String> terminas, List<Production> productions, String startSymbol) {
         this.id = id;
         this.nonterminals = nonterminals;
-        this.terminas = terminas;
+        this.terminals = terminas;
         this.productions = productions;
         this.startSymbol = startSymbol;
     }
@@ -28,12 +28,12 @@ public class Grammar {
         this.nonterminals = nonterminals;
     }
 
-    public List<String> getTerminas() {
-        return terminas;
+    public List<String> getTerminals() {
+        return terminals;
     }
 
-    public void setTerminas(List<String> terminas) {
-        this.terminas = terminas;
+    public void setTerminals(List<String> terminals) {
+        this.terminals = terminals;
     }
 
     public List<Production> getProductions() {
@@ -65,7 +65,7 @@ public class Grammar {
         return "Grammar{" +
                 "id='" + id + '\'' +
                 ", nonterminals=" + nonterminals +
-                ", terminas=" + terminas +
+                ", terminals=" + terminals +
                 ", productions=" + productions +
                 ", startSymbol='" + startSymbol + '\'' +
                 '}';

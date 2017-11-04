@@ -12,7 +12,7 @@ public class Production {
     // each inner list is a list of terminals + nonterminals
     private List<List<String>> rightSide;
 
-    public Production(String leftSide, List<List<String>> rightSide){
+    public Production(String leftSide, List<List<String>> rightSide) {
         this.leftSide = leftSide;
         this.rightSide = rightSide;
     }
@@ -30,5 +30,21 @@ public class Production {
             }
         }
         return prod;
+    }
+
+    public String getLeftSide() {
+        return leftSide;
+    }
+
+    public void setLeftSide(String leftSide) {
+        this.leftSide = leftSide;
+    }
+
+    public List<List<String>> getRightSide() {
+        return rightSide;
+    }
+
+    public void setRightSide(List<List<String>> rightSide) {
+        this.rightSide = rightSide;
     }
 }

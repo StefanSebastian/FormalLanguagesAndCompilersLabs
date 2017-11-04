@@ -1,6 +1,8 @@
 package app;
 
 import app.controller.Controller;
+import app.finiteAutomata.FiniteAutomata;
+import app.finiteAutomata.Transition;
 import app.grammar.Grammar;
 import app.grammar.Production;
 
@@ -27,6 +29,8 @@ public class UI {
         System.out.println("1.Read a grammar");
         System.out.println("2.Display grammars");
         System.out.println("3.Check regular");
+        System.out.println("4.Read FA");
+        System.out.println("5.Display FAs");
     }
 
     private List<Production> readProductions(Scanner reader) throws AppException {
@@ -130,7 +134,7 @@ public class UI {
     }
 
     private void displayGrammarDetailsMenu(String id) throws AppException{
-        Grammar grammar = controller.getById(id);
+        Grammar grammar = controller.getGrammarById(id);
         if (grammar == null){
             System.out.println("Invalid id");
             return;
@@ -181,12 +185,150 @@ public class UI {
         System.out.println("Grammar id: ");
         String id = reader.next();
 
-        String res = controller.checkRegular(controller.getById(id));
+        String res = controller.checkRegular(controller.getGrammarById(id));
 
         if (res.equals("OK")){
             System.out.println("Grammar is regular");
         } else {
             System.out.println(res);
+        }
+    }
+
+
+
+    private List<Transition> readTransitions(Scanner reader) throws AppException {
+        List<Transition> transitions = new LinkedList<>();
+
+        String transition = reader.next();
+        while (!transition.equals("end")){
+            String[] values = transition.split(",");
+            if (values.length != 3){
+                throw new AppException("Invalid format");
+            }
+            transitions.add(new Transition(values[0], values[1], values[2]));
+
+            transition = reader.next();
+        }
+        return transitions;
+    }
+
+    private void readFiniteAutomataFromFile() throws AppException {
+
+        System.out.println("Path : ");
+        reader.nextLine();
+        String path = reader.nextLine();
+
+        File file = new File(path);
+        Scanner fileReader;
+        try {
+            fileReader = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            throw new AppException(e.getMessage());
+        }
+
+        String identifier = fileReader.next();
+        String alphabet = fileReader.next();
+        List<String> alphabetList = Arrays.asList(alphabet.split(","));
+        String states = fileReader.next();
+        List<String> statesList = Arrays.asList(states.split(","));
+        String initialState = fileReader.next();
+        String finalStates = fileReader.next();
+        List<String> finalStatesList = Arrays.asList(finalStates.split(","));
+
+        List<Transition> transitions = readTransitions(fileReader);
+
+        FiniteAutomata finiteAutomata = new FiniteAutomata(identifier, statesList, alphabetList, initialState, finalStatesList, transitions);
+        controller.addFiniteAutomata(finiteAutomata);
+    }
+
+    private void readFiniteAutomataFromKeyboard() throws AppException {
+        System.out.println("Identifier : ");
+        String identifier = reader.next();
+
+        System.out.println("Alphabet separated by commas : e.g. a,b,c");
+        String alphabet = reader.next();
+        List<String> alphabetList = Arrays.asList(alphabet.split(","));
+
+        System.out.println("States separated by commas ; e.g. q1,q2,q3");
+        String states = reader.next();
+        List<String> statesList = Arrays.asList(states.split(","));
+
+        System.out.println("Initial state : ");
+        String initialState = reader.next();
+
+        System.out.println("Final states separated by commas : ");
+        String finalStates = reader.next();
+        List<String> finalStatesList = Arrays.asList(finalStates.split(","));
+
+        System.out.println("Transitions ; one on each line ");
+        System.out.println("Use format state1,state2,value");
+        System.out.println("Type 'end' after the last transition");
+
+        List<Transition> transitions = readTransitions(reader);
+
+        FiniteAutomata finiteAutomata = new FiniteAutomata(identifier, statesList, alphabetList, initialState, finalStatesList, transitions);
+        controller.addFiniteAutomata(finiteAutomata);
+    }
+
+    private void readFiniteAutomata() throws AppException {
+        System.out.println("1.Read from keyboard");
+        System.out.println("2.Read from file");
+        String opt = reader.next();
+
+
+        if (opt.equals("1")) {
+            readFiniteAutomataFromKeyboard();
+        } else {
+            readFiniteAutomataFromFile();
+        }
+    }
+
+
+    private void displayFiniteAutomataDetailsMenu(String id) throws AppException {
+        FiniteAutomata finiteAutomata = controller.getFiniteAutomataById(id);
+        if (finiteAutomata == null){
+            System.out.println("Invalid id");
+            return;
+        }
+
+        while (true){
+            System.out.println("1.states");
+            System.out.println("2.alphabet");
+            System.out.println("3.transitions");
+            System.out.println("4.initial state");
+            System.out.println("5.final states");
+            System.out.println("6.back");
+
+            String opt = reader.next();
+            if (opt.equals("1")){
+                System.out.println(finiteAutomata.getStates());
+            } else if (opt.equals("2")){
+                System.out.println(finiteAutomata.getAlphabet());
+            } else if (opt.equals("3")){
+                System.out.println(finiteAutomata.getTransitions());
+            } else if (opt.equals("4")){
+                System.out.println(finiteAutomata.getInitialState());
+            } else if (opt.equals("5")){
+                System.out.println(finiteAutomata.getFinalStates());
+            } else if (opt.equals("6")){
+                break;
+            }
+        }
+    }
+
+    private void displayFiniteAutomatas() throws AppException {
+        for (FiniteAutomata finiteAutomata : controller.getFiniteAutomatas().values()) {
+            System.out.println(finiteAutomata.getIdentifier());
+        }
+
+        System.out.println("1.display finite automata details");
+        System.out.println("2.back");
+
+        String opt = reader.next();
+        if (opt.equals("1")){
+            System.out.println("FA id : ");
+            String id = reader.next();
+            displayFiniteAutomataDetailsMenu(id);
         }
     }
 
@@ -203,6 +345,10 @@ public class UI {
                     displayGrammars();
                 } else if (option.equals("3")) {
                     checkRegular();
+                } else if (option.equals("4")) {
+                    readFiniteAutomata();
+                } else if (option.equals("5")) {
+                    displayFiniteAutomatas();
                 }
 
             } catch (AppException e){

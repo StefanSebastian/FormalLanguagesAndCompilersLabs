@@ -2,6 +2,7 @@ package app.controller;
 
 import app.AppException;
 import app.Constants;
+import app.finiteAutomata.FiniteAutomata;
 import app.grammar.Grammar;
 import app.grammar.Production;
 
@@ -16,9 +17,23 @@ public class Controller {
     private Map<String, Grammar> grammars;
     private GrammarValidator grammarValidator;
 
+    private Map<String, FiniteAutomata> finiteAutomatas;
+    private FiniteAutomataValidator finiteAutomataValidator;
+
     public Controller(){
         grammars = new HashMap<>();
         grammarValidator = new GrammarValidator();
+
+        finiteAutomatas = new HashMap<>();
+        finiteAutomataValidator = new FiniteAutomataValidator();
+    }
+
+    public void addFiniteAutomata(FiniteAutomata finiteAutomata) throws AppException {
+        finiteAutomataValidator.validateFiniteAutomata(finiteAutomata);
+        if (finiteAutomatas.containsKey(finiteAutomata.getIdentifier())){
+            throw new AppException("This id is already set");
+        }
+        finiteAutomatas.put(finiteAutomata.getIdentifier(), finiteAutomata);
     }
 
     public void addGrammar(Grammar grammar) throws AppException {
@@ -29,11 +44,19 @@ public class Controller {
         grammars.put(grammar.getId(), grammar);
     }
 
+    public Map<String, FiniteAutomata> getFiniteAutomatas() throws AppException {
+        return finiteAutomatas;
+    }
+
     public Map<String, Grammar> getGrammars() throws AppException {
         return grammars;
     }
 
-    public Grammar getById(String id) throws AppException{
+    public FiniteAutomata getFiniteAutomataById(String id) throws AppException {
+        return finiteAutomatas.get(id);
+    }
+
+    public Grammar getGrammarById(String id) throws AppException{
         return grammars.get(id);
     }
 

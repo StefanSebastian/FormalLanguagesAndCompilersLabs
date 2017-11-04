@@ -31,6 +31,7 @@ public class UI {
         System.out.println("3.Check regular");
         System.out.println("4.Read FA");
         System.out.println("5.Display FAs");
+        System.out.println("6.Convert grammar to FA");
     }
 
     private List<Production> readProductions(Scanner reader) throws AppException {
@@ -332,6 +333,14 @@ public class UI {
         }
     }
 
+    private void convertGrammarToFA() throws AppException {
+        System.out.println("Grammar id : ");
+        String id = reader.next();
+
+        FiniteAutomata fa = controller.convertRegularGrammarToFiniteAutomata(controller.getGrammarById(id));
+        System.out.println(fa);
+    }
+
     public void runMenu(){
         while(true){
             printMenu();
@@ -349,6 +358,8 @@ public class UI {
                     readFiniteAutomata();
                 } else if (option.equals("5")) {
                     displayFiniteAutomatas();
+                } else if (option.equals("6")) {
+                    convertGrammarToFA();
                 }
 
             } catch (AppException e){

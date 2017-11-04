@@ -20,12 +20,16 @@ public class Controller {
     private Map<String, FiniteAutomata> finiteAutomatas;
     private FiniteAutomataValidator finiteAutomataValidator;
 
+    private GrammarFaConverter converter;
+
     public Controller(){
         grammars = new HashMap<>();
         grammarValidator = new GrammarValidator();
 
         finiteAutomatas = new HashMap<>();
         finiteAutomataValidator = new FiniteAutomataValidator();
+
+        converter = new GrammarFaConverter();
     }
 
     public void addFiniteAutomata(FiniteAutomata finiteAutomata) throws AppException {
@@ -61,6 +65,10 @@ public class Controller {
     }
 
     public String checkRegular(Grammar grammar) throws AppException {
+        if (grammar == null){
+            throw new AppException("Invalid grammar");
+        }
+
         String res = "";
 
         boolean startGoesToEpsilon = false;
@@ -119,6 +127,16 @@ public class Controller {
         }
 
         return res.length() == 0 ? "OK" : res;
+    }
+
+    public FiniteAutomata convertRegularGrammarToFiniteAutomata(Grammar grammar) throws AppException {
+        if (!checkRegular(grammar).equals("OK")){
+            throw new AppException("Grammar should be regular!");
+        }
+
+        FiniteAutomata finiteAutomata = converter.convert(grammar);
+        addFiniteAutomata(finiteAutomata);
+        return finiteAutomata;
     }
 
 }

@@ -89,6 +89,7 @@ public class UI {
 
         Grammar grammar = new Grammar(identifier, nonterminalsList, terminalsList, productions, startSymbol);
         controller.addGrammar(grammar);
+        System.out.println(grammar);
     }
 
     private void readGrammarFromFile() throws AppException {
@@ -116,7 +117,7 @@ public class UI {
 
         Grammar grammar = new Grammar(identifier, nonterminalsList, terminalsList, productions, startSymbol);
         controller.addGrammar(grammar);
-
+        System.out.println(grammar);
         fileReader.close();
     }
 
@@ -239,7 +240,10 @@ public class UI {
         List<Transition> transitions = readTransitions(fileReader);
 
         FiniteAutomata finiteAutomata = new FiniteAutomata(identifier, statesList, alphabetList, initialState, finalStatesList, transitions);
+        System.out.println(finiteAutomata);
         controller.addFiniteAutomata(finiteAutomata);
+
+        fileReader.close();
     }
 
     private void readFiniteAutomataFromKeyboard() throws AppException {
@@ -268,6 +272,7 @@ public class UI {
         List<Transition> transitions = readTransitions(reader);
 
         FiniteAutomata finiteAutomata = new FiniteAutomata(identifier, statesList, alphabetList, initialState, finalStatesList, transitions);
+        System.out.println(finiteAutomata);
         controller.addFiniteAutomata(finiteAutomata);
     }
 

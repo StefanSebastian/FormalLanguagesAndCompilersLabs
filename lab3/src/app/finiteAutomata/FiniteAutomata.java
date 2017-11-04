@@ -69,6 +69,18 @@ public class FiniteAutomata {
     public void setTransitions(List<Transition> transitions) {
         this.transitions = transitions;
     }
+
+    @Override
+    public String toString() {
+        return "FiniteAutomata{" +
+                "identifier='" + identifier + '\'' +
+                ", states=" + states +
+                ", alphabet=" + alphabet +
+                ", initialState='" + initialState + '\'' +
+                ", finalStates=" + finalStates +
+                ", transitions=" + transitions +
+                '}';
+    }
 }
 
 

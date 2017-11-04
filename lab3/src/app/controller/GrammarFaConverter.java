@@ -96,13 +96,22 @@ public class GrammarFaConverter {
         for (Transition transition : finiteAutomata.getTransitions()){
             statesOutgoing.add(transition.getState1());
         }
+
+        String startSymbol = "S";
+        nonterminals.add(startSymbol);
+        stateNonterminalCorresp.put(finiteAutomata.getInitialState(), startSymbol);
+
         int i = 1;
         for (String state : statesOutgoing){
-            nonterminals.add("N" + i);
-            stateNonterminalCorresp.put(state, "N" + i);
-            i++;
+            if (!state.equals(finiteAutomata.getInitialState())) {
+                nonterminals.add("N" + i);
+                stateNonterminalCorresp.put(state, "N" + i);
+                i++;
+            }
         }
+
         // in initial state is final and there is an incoming transition
+        boolean initialFinalAndIncoming = false;
         if (finiteAutomata.getFinalStates().contains(finiteAutomata.getInitialState())){
             boolean incoming = false;
             for (Transition transition : finiteAutomata.getTransitions()){
@@ -112,21 +121,24 @@ public class GrammarFaConverter {
             }
 
             if (incoming){
-
-                // get current nonterm for start
-                String startNonTerm = stateNonterminalCorresp.get(finiteAutomata.getInitialState());
                 // add the extra nonterminal
                 stateNonterminalCorresp.put(finiteAutomata.getInitialState(), "N0");
+                nonterminals.add("N0");
 
                 // treat the starting non terminal separately
-                Production production = new Production(startNonTerm, Arrays.asList(Arrays.asList(Constants.epsilon)));
-                productions.put(startNonTerm, production);
+                Production production = new Production(startSymbol, new LinkedList<>());
+                List<List<String>> righSide = production.getRightSide();
+                righSide.add(Arrays.asList(Constants.epsilon));
+                productions.put(startSymbol, production);
 
+                initialFinalAndIncoming = true;
+            } else {
+                Production production = new Production(startSymbol, new LinkedList<>());
+                List<List<String>> righSide = production.getRightSide();
+                righSide.add(Arrays.asList(Constants.epsilon));
+                productions.put(startSymbol, production);
             }
         }
-
-        String startSymbol = stateNonterminalCorresp.get(finiteAutomata.getInitialState());
-
 
         // iterate through transition
         for (Transition transition : finiteAutomata.getTransitions()){
@@ -142,6 +154,13 @@ public class GrammarFaConverter {
 
                 List<List<String>> rightSide = production.getRightSide();
                 rightSide.add(Arrays.asList(transition.getValue()));
+
+                if (transition.getState1().equals(finiteAutomata.getInitialState()) &&
+                        initialFinalAndIncoming){
+                    production = productions.get("S");
+                    rightSide = production.getRightSide();
+                    rightSide.add(Arrays.asList(transition.getValue()));
+                }
             }
             // production of form A -> aB
             if (statesOutgoing.contains(transition.getState1()) && statesOutgoing.contains(transition.getState2())){
@@ -156,6 +175,13 @@ public class GrammarFaConverter {
 
                 List<List<String>> rightSide = production.getRightSide();
                 rightSide.add(Arrays.asList(transition.getValue(), nonterm2));
+
+                if (transition.getState1().equals(finiteAutomata.getInitialState()) &&
+                        initialFinalAndIncoming){
+                    production = productions.get("S");
+                    rightSide = production.getRightSide();
+                    rightSide.add(Arrays.asList(transition.getValue(), nonterm2));
+                }
             }
         }
 

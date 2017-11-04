@@ -1,5 +1,7 @@
 package app;
 
+import app.controller.Controller;
+
 /**
  * Created by Sebi on 04-Nov-17.
  */

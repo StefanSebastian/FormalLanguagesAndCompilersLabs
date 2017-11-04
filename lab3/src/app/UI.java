@@ -1,5 +1,6 @@
 package app;
 
+import app.controller.Controller;
 import app.grammar.Grammar;
 import app.grammar.Production;
 
@@ -25,6 +26,7 @@ public class UI {
     private void printMenu(){
         System.out.println("1.Read a grammar");
         System.out.println("2.Display grammars");
+        System.out.println("3.Check regular");
     }
 
     private List<Production> readProductions(Scanner reader) throws AppException {
@@ -174,6 +176,20 @@ public class UI {
 
     }
 
+
+    private void checkRegular() throws AppException{
+        System.out.println("Grammar id: ");
+        String id = reader.next();
+
+        String res = controller.checkRegular(controller.getById(id));
+
+        if (res.equals("OK")){
+            System.out.println("Grammar is regular");
+        } else {
+            System.out.println(res);
+        }
+    }
+
     public void runMenu(){
         while(true){
             printMenu();
@@ -185,6 +201,8 @@ public class UI {
                     readGrammar();
                 } else if (option.equals("2")) {
                     displayGrammars();
+                } else if (option.equals("3")) {
+                    checkRegular();
                 }
 
             } catch (AppException e){

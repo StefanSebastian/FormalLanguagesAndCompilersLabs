@@ -1,0 +1,7 @@
+G7
+S,A
+a,b,c
+S
+S->a,A|ε
+A->a,S|b
+end

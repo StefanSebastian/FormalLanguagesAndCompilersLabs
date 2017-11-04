@@ -12,10 +12,10 @@ public class Grammar {
     private List<Production> productions;
     private String startSymbol;
 
-    public Grammar(String id, List<String> nonterminals, List<String> terminas, List<Production> productions, String startSymbol) {
+    public Grammar(String id, List<String> nonterminals, List<String> terminals, List<Production> productions, String startSymbol) {
         this.id = id;
         this.nonterminals = nonterminals;
-        this.terminals = terminas;
+        this.terminals = terminals;
         this.productions = productions;
         this.startSymbol = startSymbol;
     }

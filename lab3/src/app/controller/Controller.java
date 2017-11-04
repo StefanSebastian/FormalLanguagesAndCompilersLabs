@@ -139,4 +139,10 @@ public class Controller {
         return finiteAutomata;
     }
 
+    public Grammar convertFiniteAutomataToRegularGrammar(FiniteAutomata finiteAutomata) throws AppException {
+        Grammar grammar = converter.convert(finiteAutomata);
+        addGrammar(grammar);
+        return grammar;
+    }
+
 }

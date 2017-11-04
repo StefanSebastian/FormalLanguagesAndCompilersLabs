@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.AppException;
 import app.Constants;
 import app.finiteAutomata.FiniteAutomata;
 import app.finiteAutomata.Transition;
@@ -78,7 +79,88 @@ public class GrammarFaConverter {
             finalStates.add(initialState);
         }
 
-
         return new FiniteAutomata(grammar.getId() + "FA", states, grammar.getTerminals(), initialState, finalStates, transitions);
+    }
+
+    public Grammar convert(FiniteAutomata finiteAutomata) throws AppException {
+        List<String> nonterminals = new LinkedList<>();
+        List<String> terminals = new LinkedList<>();
+        Map<String, Production> productions = new HashMap<>(); // productions maped by left side
+        Map<String, String> stateNonterminalCorresp = new HashMap<>();
+
+        // terminals match the alphabet
+        terminals = finiteAutomata.getAlphabet();
+
+        // nonterminals - only for outgoing states
+        Set<String> statesOutgoing = new HashSet<>();
+        for (Transition transition : finiteAutomata.getTransitions()){
+            statesOutgoing.add(transition.getState1());
+        }
+        int i = 1;
+        for (String state : statesOutgoing){
+            nonterminals.add("N" + i);
+            stateNonterminalCorresp.put(state, "N" + i);
+            i++;
+        }
+        // in initial state is final and there is an incoming transition
+        if (finiteAutomata.getFinalStates().contains(finiteAutomata.getInitialState())){
+            boolean incoming = false;
+            for (Transition transition : finiteAutomata.getTransitions()){
+                if (transition.getState2().equals(finiteAutomata.getInitialState())){
+                    incoming = true;
+                }
+            }
+
+            if (incoming){
+
+                // get current nonterm for start
+                String startNonTerm = stateNonterminalCorresp.get(finiteAutomata.getInitialState());
+                // add the extra nonterminal
+                stateNonterminalCorresp.put(finiteAutomata.getInitialState(), "N0");
+
+                // treat the starting non terminal separately
+                Production production = new Production(startNonTerm, Arrays.asList(Arrays.asList(Constants.epsilon)));
+                productions.put(startNonTerm, production);
+
+            }
+        }
+
+        String startSymbol = stateNonterminalCorresp.get(finiteAutomata.getInitialState());
+
+
+        // iterate through transition
+        for (Transition transition : finiteAutomata.getTransitions()){
+            // a production of form A -> b
+            if (finiteAutomata.getFinalStates().contains(transition.getState2())){
+                String nonterm1 = stateNonterminalCorresp.get(transition.getState1());
+
+                Production production = productions.get(nonterm1);
+                if (production == null){
+                    production = new Production(nonterm1, new LinkedList<>());
+                    productions.put(nonterm1, production);
+                }
+
+                List<List<String>> rightSide = production.getRightSide();
+                rightSide.add(Arrays.asList(transition.getValue()));
+            }
+            // production of form A -> aB
+            if (statesOutgoing.contains(transition.getState1()) && statesOutgoing.contains(transition.getState2())){
+                String nonterm1 = stateNonterminalCorresp.get(transition.getState1());
+                String nonterm2 = stateNonterminalCorresp.get(transition.getState2());
+
+                Production production = productions.get(nonterm1);
+                if (production == null){
+                    production = new Production(nonterm1, new LinkedList<>());
+                    productions.put(nonterm1, production);
+                }
+
+                List<List<String>> rightSide = production.getRightSide();
+                rightSide.add(Arrays.asList(transition.getValue(), nonterm2));
+            }
+        }
+
+        String id = finiteAutomata.getIdentifier() + "G";
+        List<Production> productionList = new LinkedList<>(productions.values());
+        return new Grammar(id, nonterminals, terminals, productionList, startSymbol);
     }
 }

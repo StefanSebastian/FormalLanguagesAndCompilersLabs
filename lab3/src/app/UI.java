@@ -32,6 +32,7 @@ public class UI {
         System.out.println("4.Read FA");
         System.out.println("5.Display FAs");
         System.out.println("6.Convert grammar to FA");
+        System.out.println("7.Convert FA to grammar");
     }
 
     private List<Production> readProductions(Scanner reader) throws AppException {
@@ -342,8 +343,26 @@ public class UI {
         System.out.println("Grammar id : ");
         String id = reader.next();
 
-        FiniteAutomata fa = controller.convertRegularGrammarToFiniteAutomata(controller.getGrammarById(id));
+        Grammar grammar = controller.getGrammarById(id);
+        if (grammar == null){
+            System.out.println("Invalid id");
+            return;
+        }
+        FiniteAutomata fa = controller.convertRegularGrammarToFiniteAutomata(grammar);
         System.out.println(fa);
+    }
+
+    private void convertFAToGrammar() throws AppException {
+        System.out.println("FA id : ");
+        String id = reader.next();
+
+        FiniteAutomata finiteAutomata = controller.getFiniteAutomataById(id);
+        if (finiteAutomata == null){
+            System.out.println("Invalid id");
+            return;
+        }
+        Grammar grammar = controller.convertFiniteAutomataToRegularGrammar(finiteAutomata);
+        System.out.println(grammar);
     }
 
     public void runMenu(){
@@ -365,6 +384,8 @@ public class UI {
                     displayFiniteAutomatas();
                 } else if (option.equals("6")) {
                     convertGrammarToFA();
+                } else if (option.equals("7")) {
+                    convertFAToGrammar();
                 }
 
             } catch (AppException e){

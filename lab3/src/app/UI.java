@@ -8,10 +8,7 @@ import app.grammar.Production;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by Sebi on 04-Nov-17.
@@ -94,32 +91,39 @@ public class UI {
     }
 
     private void readGrammarFromFile() throws AppException {
-        System.out.println("Path : ");
-        reader.nextLine();
-        String path = reader.nextLine();
-
-        File file = new File(path);
         Scanner fileReader = null;
         try {
-            fileReader = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            throw new AppException(e.getMessage());
+            System.out.println("Path : ");
+            reader.nextLine();
+            String path = reader.nextLine();
+
+            File file = new File(path);
+            try {
+                fileReader = new Scanner(file);
+            } catch (FileNotFoundException e) {
+                throw new AppException(e.getMessage());
+            }
+
+            String identifier = fileReader.next();
+            String nonterminals = fileReader.next();
+            List<String> nonterminalsList = Arrays.asList(nonterminals.split(","));
+            String terminals = fileReader.next();
+            List<String> terminalsList = Arrays.asList(terminals.split(","));
+            String startSymbol = fileReader.next();
+
+            //productions
+            List<Production> productions = readProductions(fileReader);
+
+            Grammar grammar = new Grammar(identifier, nonterminalsList, terminalsList, productions, startSymbol);
+            controller.addGrammar(grammar);
+            System.out.println(grammar);
+        } catch (NoSuchElementException e){
+            throw new AppException("Invalid file");
+        } finally {
+            if (fileReader != null) {
+                fileReader.close();
+            }
         }
-
-        String identifier = fileReader.next();
-        String nonterminals = fileReader.next();
-        List<String> nonterminalsList = Arrays.asList(nonterminals.split(","));
-        String terminals = fileReader.next();
-        List<String> terminalsList = Arrays.asList(terminals.split(","));
-        String startSymbol = fileReader.next();
-
-        //productions
-        List<Production> productions = readProductions(fileReader);
-
-        Grammar grammar = new Grammar(identifier, nonterminalsList, terminalsList, productions, startSymbol);
-        controller.addGrammar(grammar);
-        System.out.println(grammar);
-        fileReader.close();
     }
 
     private void readGrammar() throws AppException{
@@ -216,35 +220,40 @@ public class UI {
     }
 
     private void readFiniteAutomataFromFile() throws AppException {
-
-        System.out.println("Path : ");
-        reader.nextLine();
-        String path = reader.nextLine();
-
-        File file = new File(path);
-        Scanner fileReader;
+        Scanner fileReader = null;
         try {
-            fileReader = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            throw new AppException(e.getMessage());
+            System.out.println("Path : ");
+            reader.nextLine();
+            String path = reader.nextLine();
+
+            File file = new File(path);
+            try {
+                fileReader = new Scanner(file);
+            } catch (FileNotFoundException e) {
+                throw new AppException(e.getMessage());
+            }
+
+            String identifier = fileReader.next();
+            String alphabet = fileReader.next();
+            List<String> alphabetList = Arrays.asList(alphabet.split(","));
+            String states = fileReader.next();
+            List<String> statesList = Arrays.asList(states.split(","));
+            String initialState = fileReader.next();
+            String finalStates = fileReader.next();
+            List<String> finalStatesList = Arrays.asList(finalStates.split(","));
+
+            List<Transition> transitions = readTransitions(fileReader);
+
+            FiniteAutomata finiteAutomata = new FiniteAutomata(identifier, statesList, alphabetList, initialState, finalStatesList, transitions);
+            System.out.println(finiteAutomata);
+            controller.addFiniteAutomata(finiteAutomata);
+        } catch (NoSuchElementException e){
+            throw new AppException("Invalid file");
+        } finally {
+            if (fileReader != null) {
+                fileReader.close();
+            }
         }
-
-        String identifier = fileReader.next();
-        String alphabet = fileReader.next();
-        List<String> alphabetList = Arrays.asList(alphabet.split(","));
-        String states = fileReader.next();
-        List<String> statesList = Arrays.asList(states.split(","));
-        String initialState = fileReader.next();
-        String finalStates = fileReader.next();
-        List<String> finalStatesList = Arrays.asList(finalStates.split(","));
-
-        List<Transition> transitions = readTransitions(fileReader);
-
-        FiniteAutomata finiteAutomata = new FiniteAutomata(identifier, statesList, alphabetList, initialState, finalStatesList, transitions);
-        System.out.println(finiteAutomata);
-        controller.addFiniteAutomata(finiteAutomata);
-
-        fileReader.close();
     }
 
     private void readFiniteAutomataFromKeyboard() throws AppException {

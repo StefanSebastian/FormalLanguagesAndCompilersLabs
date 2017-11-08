@@ -91,11 +91,9 @@ public class GrammarFaConverter {
         // terminals match the alphabet
         terminals = finiteAutomata.getAlphabet();
 
-        // nonterminals - only for outgoing states
-        Set<String> statesOutgoing = new HashSet<>();
-        for (Transition transition : finiteAutomata.getTransitions()){
-            statesOutgoing.add(transition.getState1());
-        }
+        // nonterminals
+        // all states ;         alternative only outgoing states
+        Set<String> statesOutgoing = new HashSet<>(finiteAutomata.getStates());
 
         String startSymbol = "S";
         nonterminals.add(startSymbol);
@@ -162,27 +160,26 @@ public class GrammarFaConverter {
                     rightSide.add(Arrays.asList(transition.getValue()));
                 }
             }
-            // production of form A -> aB
-            if (statesOutgoing.contains(transition.getState1()) && statesOutgoing.contains(transition.getState2())){
-                String nonterm1 = stateNonterminalCorresp.get(transition.getState1());
-                String nonterm2 = stateNonterminalCorresp.get(transition.getState2());
+            // production of form A -> aB ; alternative only between outgoing states
+            String nonterm1 = stateNonterminalCorresp.get(transition.getState1());
+            String nonterm2 = stateNonterminalCorresp.get(transition.getState2());
 
-                Production production = productions.get(nonterm1);
-                if (production == null){
-                    production = new Production(nonterm1, new LinkedList<>());
-                    productions.put(nonterm1, production);
-                }
-
-                List<List<String>> rightSide = production.getRightSide();
-                rightSide.add(Arrays.asList(transition.getValue(), nonterm2));
-
-                if (transition.getState1().equals(finiteAutomata.getInitialState()) &&
-                        initialFinalAndIncoming){
-                    production = productions.get("S");
-                    rightSide = production.getRightSide();
-                    rightSide.add(Arrays.asList(transition.getValue(), nonterm2));
-                }
+            Production production = productions.get(nonterm1);
+            if (production == null){
+                production = new Production(nonterm1, new LinkedList<>());
+                productions.put(nonterm1, production);
             }
+
+            List<List<String>> rightSide = production.getRightSide();
+            rightSide.add(Arrays.asList(transition.getValue(), nonterm2));
+
+            if (transition.getState1().equals(finiteAutomata.getInitialState()) &&
+                    initialFinalAndIncoming){
+                production = productions.get("S");
+                rightSide = production.getRightSide();
+                rightSide.add(Arrays.asList(transition.getValue(), nonterm2));
+            }
+
         }
 
         String id = finiteAutomata.getIdentifier() + "G";

@@ -152,7 +152,8 @@ public class UI {
             System.out.println("2.nonterminals");
             System.out.println("3.start symbol");
             System.out.println("4.productions");
-            System.out.println("5.back");
+            System.out.println("5.productions for a nonterminal");
+            System.out.println("6.back");
 
             String opt = reader.next();
             if (opt.equals("1")){
@@ -164,6 +165,14 @@ public class UI {
             } else if (opt.equals("4")){
                 System.out.println(grammar.getProductions());
             } else if (opt.equals("5")){
+                System.out.println("Nonterminal :");
+                String nonterm = reader.next();
+                for (Production production : grammar.getProductions()){
+                    if (production.getLeftSide().equals(nonterm)){
+                        System.out.println(production);
+                    }
+                }
+            } else if (opt.equals("6")){
                 break;
             }
         }

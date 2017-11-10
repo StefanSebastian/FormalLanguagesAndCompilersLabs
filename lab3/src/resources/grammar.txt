@@ -1,8 +1,8 @@
-G2
+G5
 S,A,B
-a,b,c
+a,b
 S
-S->a,A|b,B
-A->a
-B->b|b,B
+S->ε|a,B
+A->a,B
+B->a|a,A
 end

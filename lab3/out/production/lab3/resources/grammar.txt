@@ -1,6 +1,6 @@
-G2
+G1
 S,A,B
-a,b,c
+a,b
 S
 S->a,A|b,B
 A->a

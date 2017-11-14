@@ -1,0 +1,112 @@
+Language specification
+Stefan Sebastian 235
+
+1.Language definition
+
+Alphabet
+
+a. Upper (A - Z) and lower case letters (a - z) of the English alphabet
+b. Underline character '_'
+c. Decimal digits (0 - 9)
+
+Lexic
+
+a. Special symbols, representing
+- operators: + - * / % <= < >= > = == !=
+- separators: {} () ; space []
+- reserved words: int char read write if else while begin end
+
+b. Identifiers
+- a sequence of letters, digits and underscores, such that the first character is a letter or an underscore
+<identifier> ::= <fistCharIdentifier><restOfIdentifier>
+<firstCharIdentifier> ::= <underscore> | <letter>
+<restOfIdentifier> ::= epsilon | <restOfIdentifier><contentOfRestOfIdentifier> 
+<contentOfRestOfIdentifier> ::= <letter> | <digit> | <underscore>
+<letter> = "A" | "B" | .. | "Z" | "a" | "b" | .. | "z"
+<non_zero_digit> ::= "1" | "2" | .. | "9"
+<zero_digit> ::= "0"
+<digit> ::= <zero_digit> | <non_zero_digit>
+<underscore> ::= "_"
+
+c. Constants
+- Integer
+<noconst> ::= <positive_number> | "-"<positive_number> | <zero_digit>
+<positive_number> ::= <non_zero_digit><digitRepeat>
+<digitRepeat> ::= epsilon | <digitRepeat><digit>
+- Character
+<charconst> ::= "'" <char> "'"
+<char> ::= <letter> | <digit> 
+- String
+<string> ::= """ <charlist> """
+<charlist> ::= <charOfCharlist> | <charOfCharlist><charList>
+<charOfCharlist> ::= <char> | <underscore>
+
+Syntax
+
+Syntactical rules
+<program> ::= "begin" <instructions> "end"
+<instructions> ::= epsilon | <instruction><instructions>
+<instruction> ::= <declaration> | <statement>								
+
+<declaration> ::= <variableDeclaration> | <arrayDeclaration> 									; declarations
+<variableDeclaration> ::= <type> <identifier> ";"
+<arrayDeclaration> ::= <type> <identifier> "[" <positive_number> "]" ";"							; an array must have a positive number of values
+<type> ::= "int" | "char"
+
+<variable> ::= <identifier> | <identifier> "[" <arrayIndex> "]"						 	; simple variable or a position in array , position must be non-negative
+<arrayIndex> ::= <positive_number> | <zero_digit> | <identifier>
+
+<statement> ::= <assignment> | <input> | <output> | <conditional> | <loop>
+
+<input> ::= "read" + "(" <variable> +")" + ";"																; input instruction 
+<output> ::= "write" + "(" + <writeContent> + ")" + ";"										; output instruction
+<writeContent> ::= <variable> | <string> | <noconst> 
+
+<assignment> ::= <variable> "=" <expression> ";"												; assignment
+								
+<expression> ::= <expression> <operator1> <term> | <term> 										; expressions
+<operator1> ::= "+" | "-"
+<term> ::= <term> <operator2> <factor> | <factor>
+<operator2> ::=  "*" | "/" | "%"
+<factor> ::= "(" <expression> ")" | <variable> | <noconst> | <charconst>
+
+<conditional> ::= "if" "(" <condition> ")" "{" <instructions> "}" "else" "{" <instructions> "}" ";"
+
+<loop> ::= "while" "(" <condition> ")" "{" <instructions> "}" ";"
+
+<condition> ::= <expression> <relation> <expression>
+<relation> ::= "<" | "<=" | ">" | ">=" | "==" | "!="
+
+
+Token type 	code
+identifier 0
+constant 1
+begin 2
+end 3
+int 4
+char 5
+read 6
+write 7
+if 8
+else 9
+while 10
+{ 11
+} 12
+( 13
+) 14
+; 15
+space 16
++ 17
+- 18
+* 19
+/ 20
+% 21
+== 22
+= 23
+!= 24
+< 25
+<= 26
+> 27
+>= 28
+[ 29
+] 30

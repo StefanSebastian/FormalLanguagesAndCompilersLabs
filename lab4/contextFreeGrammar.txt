@@ -1,0 +1,110 @@
+G = (N, E, P, S)
+
+N : 
+identifier
+fistCharIdentifier
+restOfIdentifier
+contentOfRestOfIdentifier
+underscore
+letter
+digit
+non_zero_digit
+zero_digit
+
+noconst
+positive_number
+digitRepeat
+charconst
+char
+string
+charList
+charOfCharlist
+
+program
+instructions
+instruction
+declaration
+statement
+variableDeclaration
+arrayDeclaration
+type
+variable
+arrayIndex
+statement
+input
+output
+writeContent
+assignment
+expression
+operator1
+term
+operator2
+factor
+conditional
+condition
+elseBlock
+loop
+relation
+
+E:
+begin, end, int, char, read, write, if, else,
+while, {, }, (, ), [, ], ;, space, +, -, *, /, %,
+==, =, !=, <, <=, >, >=, a-z, A-Z, _, 0-9
+
+S: program
+
+P: 
+program -> begin instructions end
+instructions -> epsilon | instruction instructions
+instruction -> declaration | statement								
+
+declaration -> variableDeclaration | arrayDeclaration 									; declarations
+variableDeclaration -> type identifier ;
+arrayDeclaration -> type identifier [ positive_number ] ;							; an array must have a positive number of values
+type -> int | char
+
+variable -> identifier | identifier [ arrayIndex ]						 	; simple variable or a position in array , position must be non->negative
+arrayIndex -> positive_number | zero_digit | variable
+
+statement -> assignment | input | output | conditional | loop
+
+input -> read ( variable ) ;																; input instruction 
+output -> write ( writeContent ) ;										; output instruction
+writeContent -> variable | string | noconst 
+
+assignment -> variable = expression ;												; assignment
+								
+expression -> expression operator1 term | term 										; expressions
+operator1 -> + | -
+term -> term operator2 factor | factor
+operator2 ->  * | / | %
+factor -> ( expression ) | variable | noconst | charconst
+
+conditional -> if ( condition ) { instructions } elseBlock
+elseBlock -> epsilon | else { instructions } ;
+
+loop -> while ( condition ) { instructions } ;
+
+condition -> expression relation expression
+relation ->  | = |  | = | == | !=
+
+identifier -> fistCharIdentifier restOfIdentifier
+firstCharIdentifier -> underscore | letter
+restOfIdentifier -> epsilon | restOfIdentifier contentOfRestOfIdentifier 
+contentOfRestOfIdentifier -> letter | digit | underscore
+letter -> A | B | .. | Z | a | b | .. | z
+non_zero_digit -> 1 | 2 | .. | 9
+zero_digit -> 0
+digit -> zero_digit | non_zero_digit
+underscore -> _
+
+noconst -> positive_number | -positive_number | zero_digit
+positive_number -> non_zero_digit digitRepeat
+digitRepeat -> epsilon | digitRepeat digit
+
+charconst -> ' char '
+char -> letter | digit 
+
+string -> " charList "
+charList -> charOfCharlist | charOfCharlist charList
+charOfCharlist -> char | underscore

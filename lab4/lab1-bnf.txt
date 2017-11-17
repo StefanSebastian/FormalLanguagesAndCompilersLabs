@@ -22,7 +22,7 @@ b. Identifiers
 <firstCharIdentifier> ::= <underscore> | <letter>
 <restOfIdentifier> ::= epsilon | <restOfIdentifier><contentOfRestOfIdentifier> 
 <contentOfRestOfIdentifier> ::= <letter> | <digit> | <underscore>
-<letter> = "A" | "B" | .. | "Z" | "a" | "b" | .. | "z"
+<letter> ::= "A" | "B" | .. | "Z" | "a" | "b" | .. | "z"
 <non_zero_digit> ::= "1" | "2" | .. | "9"
 <zero_digit> ::= "0"
 <digit> ::= <zero_digit> | <non_zero_digit>
@@ -37,8 +37,8 @@ c. Constants
 <charconst> ::= "'" <char> "'"
 <char> ::= <letter> | <digit> 
 - String
-<string> ::= """ <charlist> """
-<charlist> ::= <charOfCharlist> | <charOfCharlist><charList>
+<string> ::= """ <charList> """
+<charList> ::= <charOfCharlist> | <charOfCharlist><charList>
 <charOfCharlist> ::= <char> | <underscore>
 
 Syntax
@@ -54,12 +54,12 @@ Syntactical rules
 <type> ::= "int" | "char"
 
 <variable> ::= <identifier> | <identifier> "[" <arrayIndex> "]"						 	; simple variable or a position in array , position must be non-negative
-<arrayIndex> ::= <positive_number> | <zero_digit> | <identifier>
+<arrayIndex> ::= <positive_number> | <zero_digit> | <variable>
 
 <statement> ::= <assignment> | <input> | <output> | <conditional> | <loop>
 
-<input> ::= "read" + "(" <variable> +")" + ";"																; input instruction 
-<output> ::= "write" + "(" + <writeContent> + ")" + ";"										; output instruction
+<input> ::= "read" "(" <variable> ")" ";"																; input instruction 
+<output> ::= "write" "(" <writeContent> ")" ";"										; output instruction
 <writeContent> ::= <variable> | <string> | <noconst> 
 
 <assignment> ::= <variable> "=" <expression> ";"												; assignment
@@ -70,7 +70,8 @@ Syntactical rules
 <operator2> ::=  "*" | "/" | "%"
 <factor> ::= "(" <expression> ")" | <variable> | <noconst> | <charconst>
 
-<conditional> ::= "if" "(" <condition> ")" "{" <instructions> "}" "else" "{" <instructions> "}" ";"
+<conditional> ::= "if" "(" <condition> ")" "{" <instructions> "}" <elseBlock>
+<elseBlock> ::= epsilon | "else" "{" <instructions> "}" ";"
 
 <loop> ::= "while" "(" <condition> ")" "{" <instructions> "}" ";"
 

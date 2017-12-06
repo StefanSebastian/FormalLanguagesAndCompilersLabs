@@ -1,4 +1,19 @@
 begin
+int i;
 int a;
-a = (a + a)*2 -3;
+int c[10];
+int sum;
+sum = 0;
+i = 0;
+while(i < 10){
+    read(c[i]);
+    a = c[i]*2 - 1;
+    if (a<=15){
+       sum = sum + a;
+    } else {
+       sum = sum - a;
+    }
+    i = i + 1;
+}
+write(sum);
 end

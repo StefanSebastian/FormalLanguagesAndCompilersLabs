@@ -16,8 +16,8 @@
       <file leaf-file-name="program.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scanner/resources/program.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="306">
+              <caret line="18" column="3" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -27,7 +27,7 @@
         <entry file="file://$PROJECT_DIR$/src/scanner/resources/sequenceOutput.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="41" />
+              <caret line="0" column="31" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="217" />
               <folding />
             </state>
           </provider>
@@ -985,7 +985,7 @@
       <workItem from="1509466093697" duration="464000" />
       <workItem from="1509466686498" duration="2929000" />
       <workItem from="1512491317390" duration="3110000" />
-      <workItem from="1512586156969" duration="2899000" />
+      <workItem from="1512586156969" duration="4959000" />
     </task>
     <servers />
   </component>
@@ -1022,11 +1022,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47212000" />
+    <option name="totallyTimeSpent" value="49272000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1435,8 +1434,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/scanner/resources/program.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="306">
+          <caret line="18" column="3" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -1444,7 +1443,7 @@
     <entry file="file://$PROJECT_DIR$/src/scanner/resources/sequenceOutput.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="41" />
+          <caret line="0" column="31" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="217" />
           <folding />
         </state>
       </provider>

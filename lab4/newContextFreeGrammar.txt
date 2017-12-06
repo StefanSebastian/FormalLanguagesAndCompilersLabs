@@ -41,11 +41,12 @@ instructions -> epsilon | instruction instructions
 instruction -> declaration | statement								
 
 declaration -> type identifier arrayDeclaration ; 
-arrayDeclaration -> epsilon | [ constant ]				
+arrayDeclaration -> epsilon | arrayPosition
+arrayPosition -> constant | variable				
 type -> int | char
 
-variable -> identifier | identifier [ arrayIndex ]				
-arrayIndex -> positive_number | zero_digit | variable
+variable -> identifier | identifier [ constant ] | identifier [ variable]				
+arrayIndex -> positive_number | constant
 
 statement -> assignment | input | output | conditional | loop
 
@@ -64,9 +65,9 @@ operator1 -> + | -
 operator2 ->  * | / | %
 
 conditional -> if ( condition ) { instructions } elseBlock
-elseBlock -> epsilon | else { instructions } ;
+elseBlock -> epsilon | else { instructions }
 
-loop -> while ( condition ) { instructions } ;
+loop -> while ( condition ) { instructions }
 
 condition -> expression relation expression
 relation -> < | <= | > | >= | == | !=

@@ -1,25 +1,6 @@
 G = (N, E, P, S)
 
 N : 
-identifier
-fistCharIdentifier
-restOfIdentifier
-contentOfRestOfIdentifier
-underscore
-letter
-digit
-non_zero_digit
-zero_digit
-
-noconst
-positive_number
-digitRepeat
-charconst
-char
-string
-charList
-charOfCharlist
-
 program
 instructions
 instruction
@@ -47,6 +28,7 @@ loop
 relation
 
 E:
+identifier, constant,
 begin, end, int, char, read, write, if, else,
 while, {, }, (, ), [, ], ;, space, +, -, *, /, %,
 ==, =, !=, <, <=, >, >=, a-z, A-Z, _, 0-9
@@ -67,17 +49,19 @@ arrayIndex -> positive_number | zero_digit | variable
 
 statement -> assignment | input | output | conditional | loop
 
-input -> read ( variable ) ;															
-output -> write ( writeContent ) ;									
-writeContent -> variable | string | noconst 
+input -> read ( variable ) ;
+output -> write ( writeContent ) ;
+writeContent -> variable | const 
 
-assignment -> variable = expression ;												; assignment
-								
-expression -> expression operator1 term | term 										; expressions
+assignment -> variable = expression ;
+
+expression -> term1 term2
+term2 -> operator1 term1 term2 | epsilon
+term1 -> term3 term4
+term4 -> operator2 term3 term4 | epsilon
+term3 -> ( expression ) | identifier | constant							 
 operator1 -> + | -
-term -> term operator2 factor | factor
 operator2 ->  * | / | %
-factor -> ( expression ) | variable | noconst | charconst
 
 conditional -> if ( condition ) { instructions } elseBlock
 elseBlock -> epsilon | else { instructions } ;
@@ -85,25 +69,4 @@ elseBlock -> epsilon | else { instructions } ;
 loop -> while ( condition ) { instructions } ;
 
 condition -> expression relation expression
-relation ->  | = |  | = | == | !=
-
-identifier -> fistCharIdentifier restOfIdentifier
-firstCharIdentifier -> underscore | letter
-restOfIdentifier -> epsilon | restOfIdentifier contentOfRestOfIdentifier 
-contentOfRestOfIdentifier -> letter | digit | underscore
-letter -> A | B | .. | Z | a | b | .. | z
-non_zero_digit -> 1 | 2 | .. | 9
-zero_digit -> 0
-digit -> zero_digit | non_zero_digit
-underscore -> _
-
-noconst -> positive_number | -positive_number | zero_digit
-positive_number -> non_zero_digit digitRepeat
-digitRepeat -> epsilon | digitRepeat digit
-
-charconst -> ' char '
-char -> letter | digit 
-
-string -> " charList "
-charList -> charOfCharlist | charOfCharlist charList
-charOfCharlist -> char | underscore
+relation -> < | <= | > | >= | == | !=

@@ -58,23 +58,23 @@ program -> begin instructions end
 instructions -> epsilon | instruction instructions
 instruction -> declaration | statement								
 
-declaration -> variableDeclaration | arrayDeclaration 						
+declaration -> variableDeclaration | arrayDeclaration 									; declarations
 variableDeclaration -> type identifier ;
-arrayDeclaration -> type identifier [ positive_number ] ;
+arrayDeclaration -> type identifier [ positive_number ] ;							; an array must have a positive number of values
 type -> int | char
 
-variable -> identifier arrayIdentifier
-arrayIdentifier -> epsilon | [ constant]
+variable -> identifier | identifier [ arrayIndex ]						 	; simple variable or a position in array , position must be non->negative
+arrayIndex -> positive_number | zero_digit | variable
 
 statement -> assignment | input | output | conditional | loop
 
-input -> read ( variable ) ;
-output -> write ( writeContent ) ;
-writeContent -> variable | const 
+input -> read ( variable ) ;																; input instruction 
+output -> write ( writeContent ) ;										; output instruction
+writeContent -> variable | string | noconst 
 
-assignment -> variable = expression ;
+assignment -> variable = expression ;												; assignment
 								
-expression -> expression operator1 term | term 
+expression -> expression operator1 term | term 										; expressions
 operator1 -> + | -
 term -> term operator2 factor | factor
 operator2 ->  * | / | %

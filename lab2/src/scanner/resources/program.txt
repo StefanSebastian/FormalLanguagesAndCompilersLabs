@@ -1,5 +1,4 @@
 begin
-char c;
-read(c);
-write( c);
+int a;
+a = (a + a)*2 -3;
 end

@@ -1,6 +1,5 @@
 begin
 char c;
-c='b';
-int a;
-a=((2+3)-2)*-2;
+read(c);
+write( c);
 end

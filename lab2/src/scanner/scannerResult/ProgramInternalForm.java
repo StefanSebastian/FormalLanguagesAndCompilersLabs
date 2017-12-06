@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Sebi on 22-Oct-17.
  */
 public class ProgramInternalForm {
-    List<PIFPair> data;
+    private List<PIFPair> data;
 
     public ProgramInternalForm() {
         data = new ArrayList<>();
@@ -17,6 +17,14 @@ public class ProgramInternalForm {
 
     public void insert(PIFPair pair){
         data.add(pair);
+    }
+
+    public List<PIFPair> getData() {
+        return data;
+    }
+
+    public void setData(List<PIFPair> data) {
+        this.data = data;
     }
 
     @Override

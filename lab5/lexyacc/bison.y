@@ -42,12 +42,64 @@ void yyerror(const char* s);
 %%
 
 program:
-	BEGINTOK instructions ENDTOK {printf("works?");}
+	BEGINTOK instructions ENDTOK {printf("ACCEPTED!");}
 	;
 
-instructions:
+instructions: {printf("instructions -> epsilon\n");}
 	|
-	IDENTIFIER
+	instruction instructions {printf("instructions -> instruction instructions\n");}
+	;
+
+instruction:
+	declaration {printf("instruction -> declaration\n");}
+	| statement {printf("instruction -> statement\n");}
+	;
+
+statement:
+	input {printf("statement -> input\n");}
+	| output {printf("statement -> output\n");}
+	;
+
+declaration:
+	type IDENTIFIER arrayDeclaration SEMICOLON {printf("declaration -> type id arrayDeclaration ;\n");}
+	;
+
+type:
+	INT {printf("type -> int\n");}
+	| CHAR {printf("type -> char\n");}
+	;
+
+arrayDeclaration: {printf("arrayDeclaration -> epsilon\n");}
+	|
+	LSQUAREPAREN NUMERIC_CONSTANT RSQUAREPAREN {printf("arrayDeclaration -> [ NUMERIC_CONSTANT ]\n");}
+	;
+
+variable:
+	IDENTIFIER arrayIdentifier {printf("variable -> IDENTIFIER arrayIdentifier\n");}
+	;
+
+arrayIdentifier: {printf("arrayIdentifier -> epsilon\n");}
+	|
+	LSQUAREPAREN arrayPosition RSQUAREPAREN {printf("arrayIdentifier -> [ arrayPosition ]\n");}
+	;
+
+arrayPosition:
+	variable {printf("arrayPosition -> variable\n");}
+	| NUMERIC_CONSTANT {printf("arrayPosition -> NUMERIC_CONSTANT\n");}
+	;
+
+input:
+	READ LROUNDPAREN variable RROUNDPAREN SEMICOLON {printf("input -> read( variable );\n");}
+	;
+
+output:
+	WRITE LROUNDPAREN writeContent RROUNDPAREN SEMICOLON {printf("output -> write(writeContent);\n");}
+	;
+
+writeContent:
+	variable {printf("writeContent -> variable\n");}
+	| NUMERIC_CONSTANT {printf("writeContent -> NUMERIC_CONSTANT\n");}
+	| CHAR_CONSTANT {printf("writeContent -> CHAR_CONSTANT\n");}
 	;
 
 %%

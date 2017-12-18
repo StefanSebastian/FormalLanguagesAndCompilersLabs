@@ -1,1 +1,9 @@
-BEGIN END
+BEGIN
+int b;
+char unChar;
+int a[10];
+read(a[1]);
+write(b);
+write('c');
+write(a[2]);
+END

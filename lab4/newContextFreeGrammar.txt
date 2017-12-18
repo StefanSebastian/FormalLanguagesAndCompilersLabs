@@ -41,12 +41,12 @@ instructions -> epsilon | instruction instructions
 instruction -> declaration | statement								
 
 declaration -> type identifier arrayDeclaration ; 
-arrayDeclaration -> epsilon | arrayPosition
-arrayPosition -> constant | variable				
+arrayDeclaration -> epsilon | [ constant ]				
 type -> int | char
 
-variable -> identifier | identifier [ constant ] | identifier [ variable]				
-arrayIndex -> positive_number | constant
+variable -> identifier arrayIdentifier
+arrayIdentifier -> epsilon [ arrayPosition ] 				
+arrayPosition -> variable | constant
 
 statement -> assignment | input | output | conditional | loop
 

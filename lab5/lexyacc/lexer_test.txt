@@ -8,4 +8,5 @@ while (a<b){
 if(a<=-2){
  read(a);
 }
+a = b*3 - 4;
 end

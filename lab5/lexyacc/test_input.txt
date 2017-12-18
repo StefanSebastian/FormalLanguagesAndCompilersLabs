@@ -6,4 +6,14 @@ read(a[1]);
 write(b);
 write('c');
 write(a[2]);
+a[1] = 2;
+a[1] = b * 3 - 4;
+if (a<2){
+ a = a + 1;
+} else {
+ a = a + 2;
+}
+while(a<1){
+    a  = a + 2;
+}
 END

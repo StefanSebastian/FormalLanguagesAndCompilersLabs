@@ -12,6 +12,8 @@ while(i < 10){
        sum = sum + a;
     } else {
        sum = sum - a;
+    } else {
+
     }
     i = i + 1;
 }

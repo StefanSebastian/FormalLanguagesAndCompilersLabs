@@ -22,6 +22,8 @@ void yyerror(const char* s);
 %token LROUNDPAREN
 %token RSQUAREPAREN
 %token LSQUAREPAREN
+%token RBRACKET
+%token LBRACKET
 %token ASSIGN
 %token SEMICOLON
 %token BEGINTOK
@@ -40,7 +42,12 @@ void yyerror(const char* s);
 %%
 
 program:
-	BEGINTOK ENDTOK
+	BEGINTOK instructions ENDTOK {printf("works?");}
+	;
+
+instructions:
+	|
+	IDENTIFIER
 	;
 
 %%

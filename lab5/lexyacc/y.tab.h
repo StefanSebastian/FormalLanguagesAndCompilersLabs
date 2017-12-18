@@ -54,20 +54,22 @@
      LROUNDPAREN = 270,
      RSQUAREPAREN = 271,
      LSQUAREPAREN = 272,
-     ASSIGN = 273,
-     SEMICOLON = 274,
-     BEGINTOK = 275,
-     ENDTOK = 276,
-     INT = 277,
-     CHAR = 278,
-     IF = 279,
-     ELSE = 280,
-     WHILE = 281,
-     READ = 282,
-     WRITE = 283,
-     IDENTIFIER = 284,
-     NUMERIC_CONSTANT = 285,
-     CHAR_CONSTANT = 286
+     RBRACKET = 273,
+     LBRACKET = 274,
+     ASSIGN = 275,
+     SEMICOLON = 276,
+     BEGINTOK = 277,
+     ENDTOK = 278,
+     INT = 279,
+     CHAR = 280,
+     IF = 281,
+     ELSE = 282,
+     WHILE = 283,
+     READ = 284,
+     WRITE = 285,
+     IDENTIFIER = 286,
+     NUMERIC_CONSTANT = 287,
+     CHAR_CONSTANT = 288
    };
 #endif
 /* Tokens.  */
@@ -86,20 +88,22 @@
 #define LROUNDPAREN 270
 #define RSQUAREPAREN 271
 #define LSQUAREPAREN 272
-#define ASSIGN 273
-#define SEMICOLON 274
-#define BEGINTOK 275
-#define ENDTOK 276
-#define INT 277
-#define CHAR 278
-#define IF 279
-#define ELSE 280
-#define WHILE 281
-#define READ 282
-#define WRITE 283
-#define IDENTIFIER 284
-#define NUMERIC_CONSTANT 285
-#define CHAR_CONSTANT 286
+#define RBRACKET 273
+#define LBRACKET 274
+#define ASSIGN 275
+#define SEMICOLON 276
+#define BEGINTOK 277
+#define ENDTOK 278
+#define INT 279
+#define CHAR 280
+#define IF 281
+#define ELSE 282
+#define WHILE 283
+#define READ 284
+#define WRITE 285
+#define IDENTIFIER 286
+#define NUMERIC_CONSTANT 287
+#define CHAR_CONSTANT 288
 
 
 

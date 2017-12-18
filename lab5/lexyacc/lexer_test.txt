@@ -1,0 +1,11 @@
+begin
+int a = 2;
+char c;
+while (a<b){
+    a = a+1;
+    a = a+-2;
+}
+if(a<-2){
+ read(a);
+}
+end
